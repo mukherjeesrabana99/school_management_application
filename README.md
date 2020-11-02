@@ -9,7 +9,7 @@ the school name appearing in the navbar
 4. Admin can view the number of events
 5. Admin can view the number of onging/scheduled/completed exams
 # Admin-Academics Management
-0. Admin can add/edit/delete /view classes sections, sessions, shifts, subjects and registered classes
+ Admin can add/edit/delete /view classes sections, sessions, shifts, subjects and registered classes
 
 
 Also Admin can add/edit/delete/view addresses , which the admin,  a student or a teacher can take referrence from, while filling the address field in the respective registration
