@@ -1,130 +1,171 @@
 from django.shortcuts import render, redirect
-from .models import EventCategory, Event, EventMember, EventAgenda
-from .forms import EventCategoryForm, EventForm, EventMemberForm, EventAgendaForm
-
+from django.core.paginator import Paginator
+from .models import SchoolClass, Section, Session, Shift,  RegisteredClass, Subject
+from.forms import SchoolClassForm, SectionForm, SessionForm,  ShiftForm, RegisteredClassForm, SubjectForm
+from django.http import HttpResponse, HttpResponseRedirect,JsonResponse
 # Create your views here.
-def category_list(request):
-	cats=EventCategory.objects.all()
-	context={'cats':cats}
-	return render(request, 'events/category_list.html', context)
-def create_category(request):
-	form=EventCategoryForm()
+# Applying CRUD to Class Model
+def create_class(request):
+	class_form=SchoolClassForm()
 	if request.method=='POST':
-		form=EventCategoryForm(request.POST)
+		form=SchoolClassForm(request.POST)
 		if form.is_valid():
 			form.save()
-			return redirect('category_list')
+			return redirect('create_class')
 	else:
-		context={'form':form}
-		return render(request, 'events/create_category.html', context)
-def edit_category(request, id):
-	cat= EventCategory.objects.get(id=id)
-	form=EventCategoryForm(instance=cat)
+		classes=SchoolClass.objects.all()
+		context={'form':class_form, "classes":classes}
+		return render(request, 'academics/class.html', context)
+def edit_class(request, cl_id):
+	cl=SchoolClass.objects.get(id=cl_id)
+	form=SchoolClassForm(instance=cl)
 	if request.method=='POST':
-		form=EventCategoryForm(request.POST, instance=cat)
+		form=SchoolClassForm(request.POST, instance=cl)
 		if form.is_valid():
 			form.save()
-			return redirect('category_list')
+			return redirect('create_class')
 	else:
 		context={'form':form}
-		return render(request, 'events/edit_category.html', context)
-def delete_category(request, id):
-	cat= EventCategory.objects.get(id=id)
-	cat.delete()
-	return redirect('category_list')
-def event_list(request):
-	events=Event.objects.all()
-	context={'events':events}
-	return render(request, 'events/event_list.html', context)
+		return render(request, 'academics/edit_class.html', context)
 
-def create_event(request):
-	form=EventForm()
+def delete_class(request, cl_id):
+	cl=SchoolClass.objects.get(id=cl_id)
+	cl.delete()
+	return redirect('create_class')
+# Applying CRUD to Section Model
+def create_section(request):
+	section_form=SectionForm()
 	if request.method=='POST':
-		form=EventForm(request.POST)
+		form=SectionForm(request.POST)
 		if form.is_valid():
 			form.save()
-			return redirect('event_list')
+			return redirect('create_section')
 	else:
-		context={'form':form}
-		return render(request, 'events/create_event.html', context)
-def view_event(request, id):
-	event= Event.objects.get(id=id)
-	context={'event':event}
-	return render(request, 'events/view_event.html', context)
-def edit_event(request, id):
-	event= Event.objects.get(id=id)
-	form=EventForm(instance=event)
+		sections=Section.objects.all()
+		context={'form':section_form, 'sections':sections}
+		return render(request, 'academics/section.html', context)
+def edit_section(request, sec_id):
+	sec=Section.objects.get(id=sec_id)
+	form=SectionForm(instance=sec)
 	if request.method=='POST':
-		form=EventForm(request.POST, instance=event)
+		form=SectionForm(request.POST, instance=sec)
 		if form.is_valid():
 			form.save()
-			return redirect('event_list')
+			return redirect('create_section')
 	else:
 		context={'form':form}
-		return render(request, 'events/edit_event.html', context)
-def delete_event(request, id):
-	event= Event.objects.get(id=id)
-	event.delete()
-	return redirect('event_list')
-def member_list(request):
-	members=EventMember.objects.all()
-	context={'members':members}
-	return render(request, 'events/member_list.html', context)
-def create_member(request):
-	form=EventMemberForm()
+		return render(request, 'academics/edit_section.html', context)
+def delete_section(request, sec_id):
+	sec=Section.objects.get(id=sec_id)
+	sec.delete()
+	return redirect('create_section')
+# Applying CRUD to Session Model
+def create_session(request):
+	form=SessionForm()
 	if request.method=='POST':
-		form=EventMemberForm(request.POST)
+		form=SessionForm(request.POST)
 		if form.is_valid():
 			form.save()
-			return redirect('member_list')
+			return redirect('create_session')
 	else:
-		context={'form':form}
-		return render(request, 'events/create_member.html', context)
-def view_member(request, id):
-	member= EventMember.objects.get(id=id)
-	context={'member':member}
-	return render(request, 'events/view_member.html', context)
-def edit_member(request, id):
-	member= EventMember.objects.get(id=id)
-	form=EventMemberForm(instance=member)
+		sessions=Session.objects.all()
+		context={'form':form, 'sessions':sessions}
+		return render(request, 'academics/session.html', context)
+def edit_session(request, ses_id):
+	ses=Session.objects.get(id=ses_id)
+	form=SessionForm(instance=ses)
 	if request.method=='POST':
-		form=EventMemberForm(request.POST, instance=member)
+		form=SessionForm(request.POST, instance=ses)
 		if form.is_valid():
 			form.save()
-			return redirect('member_list')
+			return redirect('create_session')
 	else:
 		context={'form':form}
-		return render(request, 'events/edit_member.html', context)
-def delete_member(request, id):
-	member= EventMember.objects.get(id=id)
-	member.delete()
-	return redirect('member_list')
-def agenda_list(request):
-	agenda=EventAgenda.objects.all()
-	context={'agenda':agenda}
-	return render(request, 'events/agenda_list.html', context)
-def create_agenda(request):
-	form=EventAgendaForm()
+		return render(request, 'academics/edit_session.html', context)
+def delete_session(request, ses_id):
+	ses=Session.objects.get(id=ses_id)
+	ses.delete()
+	return redirect('create_session')
+# Applying CRUD to Shift Model
+def create_shift(request):
+	form=ShiftForm()
 	if request.method=='POST':
-		form=EventAgendaForm(request.POST)
+		form=ShiftForm(request.POST)
 		if form.is_valid():
 			form.save()
-			return redirect('agenda_list')
+			return redirect('create_shift')
 	else:
-		context={'form':form}
-		return render(request, 'events/create_agenda.html', context)
-def edit_agenda(request, id):
-	agenda= EventAgenda.objects.get(id=id)
-	form=EventAgendaForm(instance=agenda)
+		shifts=Shift.objects.all()
+		context={'form':form, 'shifts':shifts}
+		return render(request, 'academics/shift.html', context)
+def edit_shift(request, shift_id):
+	shift=Shift.objects.get(id=shift_id)
+	form=ShiftForm(instance=shift)
 	if request.method=='POST':
-		form=EventAgendaForm(request.POST, instance=agenda)
+		form=ShiftForm(request.POST, instance=shift)
 		if form.is_valid():
 			form.save()
-			return redirect('agenda_list')
+			return redirect('create_shift')
 	else:
 		context={'form':form}
-		return render(request, 'events/edit_agenda.html', context)
-def delete_agenda(request, id):
-	agenda= EventAgenda.objects.get(id=id)
-	agenda.delete()
-	return redirect('agenda_list')
+		return render(request, 'academics/edit_shift.html', context)
+def delete_shift(request, shift_id):
+	shift=Shift.objects.get(id=shift_id)
+	shift.delete()
+	return redirect('create_shift')
+# Create registered class using  Registered Class Model
+def create_registeredclass(request):
+	form=RegisteredClassForm()
+	if request.method=='POST':
+		form=RegisteredClassForm(request.POST)
+		if form.is_valid():
+			form.save()
+			return redirect('create_registeredclass')
+	else:
+		classes=RegisteredClass.objects.all()
+		context={'form':form, 'classes':classes}
+		return render(request, 'academics/reg_class.html', context)
+# Applying CRUD to Subject Model
+def create_subject(request):
+	form=SubjectForm()
+	if request.method=='POST':
+		form=SubjectForm(request.POST)
+		if form.is_valid():
+			form.save()
+			return redirect('create_subject')
+	else:
+		subjects=Subject.objects.all()
+		context={'form':form, 'subjects':subjects}
+		return render(request, 'academics/subject.html', context)
+def edit_subject(request, sub_id):
+	sub=Subject.objects.get(id=sub_id)
+	form=SubjectForm(instance=sub)
+	if request.method=='POST':
+		form=SubjectForm(request.POST, instance=sub)
+		if form.is_valid():
+			form.save()
+			return redirect('create_subject')
+	else:
+		context={'form':form}
+		return render(request, 'academics/edit_subject.html', context)
+def delete_subject(request, sub_id):
+	sub=Subject.objects.get(id=sub_id)
+	sub.delete()
+	return redirect('create_subject')
+# Edit registered class using  Registered Class Model
+def edit_regclass(request, cl_id):
+	cl=RegisteredClass.objects.get(id=cl_id)
+	form=RegisteredClassForm(instance=cl)
+	if request.method=='POST':
+		form=RegisteredClassForm(request.POST, instance=cl)
+		if form.is_valid():
+			form.save()
+			return redirect('create_registeredclass')
+	else:
+		context={'form':form}
+		return render(request, 'academics/edit_regcl.html', context)
+#Delete registered class using  Registered Class Model
+def delete_regclass(request, cl_id):
+	cl=RegisteredClass.objects.get(id=cl_id)
+	cl.delete()
+	return redirect('create_registeredclass')
