@@ -4,6 +4,7 @@ from .models import SchoolClass, Section, Session, Shift,  RegisteredClass, Subj
 from.forms import SchoolClassForm, SectionForm, SessionForm,  ShiftForm, RegisteredClassForm, SubjectForm
 from django.http import HttpResponse, HttpResponseRedirect,JsonResponse
 # Create your views here.
+# Applying CRUD to Class Model
 def create_class(request):
 	class_form=SchoolClassForm()
 	if request.method=='POST':
@@ -31,6 +32,7 @@ def delete_class(request, cl_id):
 	cl=SchoolClass.objects.get(id=cl_id)
 	cl.delete()
 	return redirect('create_class')
+# Applying CRUD to Section Model
 def create_section(request):
 	section_form=SectionForm()
 	if request.method=='POST':
@@ -57,6 +59,7 @@ def delete_section(request, sec_id):
 	sec=Section.objects.get(id=sec_id)
 	sec.delete()
 	return redirect('create_section')
+# Applying CRUD to Session Model
 def create_session(request):
 	form=SessionForm()
 	if request.method=='POST':
@@ -83,6 +86,7 @@ def delete_session(request, ses_id):
 	ses=Session.objects.get(id=ses_id)
 	ses.delete()
 	return redirect('create_session')
+# Applying CRUD to Shift Model
 def create_shift(request):
 	form=ShiftForm()
 	if request.method=='POST':
@@ -109,6 +113,7 @@ def delete_shift(request, shift_id):
 	shift=Shift.objects.get(id=shift_id)
 	shift.delete()
 	return redirect('create_shift')
+# Applying CRUD to Registered Class Model
 def create_registeredclass(request):
 	form=RegisteredClassForm()
 	if request.method=='POST':
@@ -120,6 +125,7 @@ def create_registeredclass(request):
 		classes=RegisteredClass.objects.all()
 		context={'form':form, 'classes':classes}
 		return render(request, 'academics/reg_class.html', context)
+# Applying CRUD to Subject Model
 def create_subject(request):
 	form=SubjectForm()
 	if request.method=='POST':
@@ -146,6 +152,7 @@ def delete_subject(request, sub_id):
 	sub=Subject.objects.get(id=sub_id)
 	sub.delete()
 	return redirect('create_subject')
+# Applying CRUD to Registered Class Model
 def edit_regclass(request, cl_id):
 	cl=RegisteredClass.objects.get(id=cl_id)
 	form=RegisteredClassForm(instance=cl)
