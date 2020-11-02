@@ -113,7 +113,7 @@ def delete_shift(request, shift_id):
 	shift=Shift.objects.get(id=shift_id)
 	shift.delete()
 	return redirect('create_shift')
-# Applying CRUD to Registered Class Model
+# Create registered class using  Registered Class Model
 def create_registeredclass(request):
 	form=RegisteredClassForm()
 	if request.method=='POST':
@@ -152,7 +152,7 @@ def delete_subject(request, sub_id):
 	sub=Subject.objects.get(id=sub_id)
 	sub.delete()
 	return redirect('create_subject')
-# Applying CRUD to Registered Class Model
+# Edit registered class using  Registered Class Model
 def edit_regclass(request, cl_id):
 	cl=RegisteredClass.objects.get(id=cl_id)
 	form=RegisteredClassForm(instance=cl)
@@ -164,6 +164,7 @@ def edit_regclass(request, cl_id):
 	else:
 		context={'form':form}
 		return render(request, 'academics/edit_regcl.html', context)
+#Delete registered class using  Registered Class Model
 def delete_regclass(request, cl_id):
 	cl=RegisteredClass.objects.get(id=cl_id)
 	cl.delete()
