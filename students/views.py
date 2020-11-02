@@ -47,18 +47,18 @@ def delete_student(request, id):
 	student.delete()
 	return redirect('student_list')
 #admin can view unapproved student list
-def unapproved_student_list(request):
+def waiting_student_list(request):
 	students=Student.objects.all().filter(status=False)
 	context={'students':students}
-	return render(request, 'students/unapproved_student_list.html', context)
+	return render(request, 'students/waiting_student_list.html', context)
 #admin can approve an unapproved student
 def approve_student(request, id):
 	student=Student.objects.get(id=id)
 	student.status=True
 	student.save()
-	return redirect('unapproved_student_list')
+	return redirect('waiting_student_list')
 #admin can cancel the student without approving him
 def cancel_student(request,id):
 	student=Student.objects.get(id=id)
 	student.delete()
-	return redirect('unapproved_student_list')
+	return redirect('waiting_student_list')
