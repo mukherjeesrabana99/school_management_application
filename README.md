@@ -39,7 +39,7 @@ Admin can add/edit/delete/view timetables for each registered class
 1. While creating the timetable model the subjects are required  to be 
 be hardcoded,which needs to be fixed
 2.While creating result, multiple subjects can't be chosen
-at a time, which too needs to ve fixed.
+at a time, which too needs to be fixed.
 
 
 
