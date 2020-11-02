@@ -1,58 +1,63 @@
 from django.shortcuts import render, redirect
-from .models import Country, City
-from .forms import CountryForm, CityForm
+from academics.models import Session, SchoolClass, Section, Subject, Shift, RegisteredClass
+from .models import School, Fees
+from faculty.models import Faculty
+from students.models import Student
+from notice.models import Notice
+from .forms import SchoolForm, FeesForm
+from events.models import Event, EventMember
+from students.models import Student
+from online_tests.models import Exam, ExamMember
 # Create your views here.
-# Applying CRUD to Country Model
-def create_country(request):
-	form=CountryForm()
+#Admin can view class count, shift count, section count, current session,schoolname, subject count,
+#faculty count, student count, event count, notice count, exam counts
+
+def index(request):
+	class_count=SchoolClass.objects.all().count()
+	section_count=Section.objects.all().count()
+	shift_count=Shift.objects.all().count()
+	subject_count=Subject.objects.all().count()
+	regcl_count=RegisteredClass.objects.all().count()		
+	session=Session.objects.get(current=True)
+	notices=Notice.objects.all().order_by('-id')
+	notice_count=notices.count()
+	faculty=Faculty.objects.all().filter(status=True)
+	faculty_count= faculty.count()
+	students=Student.objects.all().filter(status=True)
+	student_count=students.count()
+	event_count=Event.objects.all().count()
+	member_count=EventMember.objects.all().count()
+	school=School.objects.get(current=True)
+	scheduled_exam_count=Exam.objects.all().filter(status="Scheduled").count()
+	completed_exam_count=Exam.objects.all().filter(status="Completed").count()
+	ongoing_exam_count=Exam.objects.all().filter(status="Ongoing").count()
+
+	context={'session':session, 'notices':notices, 'notice_count':notice_count,   'school':school, 
+	'faculty_count':faculty_count, 'student_count':student_count, 'class_count':class_count,
+	'shift_count':shift_count, 'subject_count':subject_count, 'section_count':section_count,
+	'regcl_count':regcl_count, 'event_count':event_count, 'member_count':member_count,
+	'scheduled_exam_count':scheduled_exam_count, 'completed_exam_count':completed_exam_count ,
+	 'ongoing_exam_count':ongoing_exam_count}
+	return render(request, 'administration/index.html', context)
+#Crendering fees page, to view and construct  fees structure
+def fees_page(request):
+	form=FeesForm()
 	if request.method=='POST':
-		form=CountryForm(request.POST)
+		form=FeesForm(request.POST)
 		if form.is_valid():
 			form.save()
-			return redirect('create_country')
+			return redirect('fees_page')
 	else:
-		countries=Country.objects.all()
-		context={'form':form, 'countries':countries}
-		return render(request, 'address/country.html', context)
-def edit_country(request, id):
-	country=Country.objects.get(id=id)
-	form=CountryForm(instance=country)
-	if request.method=='POST':
-		form=CountryForm(request.POST, instance=country)
-		if form.is_valid():
-			form.save()
-			return redirect('create_country')
-	else:
-		context={'form':form}
-		return render(request, 'address/edit_country.html', context)
-def delete_country(request, id):
-	country=Country.objects.get(id=id)
-	country.delete()
-	return redirect('create_country')
-# Applying CRUD to City Model
-def create_city(request):
-	form=CityForm()
-	if request.method=='POST':
-		form=CityForm(request.POST)
-		if form.is_valid():
-			form.save()
-			return redirect('create_city')
-	else:
-		cities=City.objects.all()
-		context={'form':form, 'cities':cities}
-		return render(request, 'address/city.html', context)
-def edit_city(request, id):
-	city=City.objects.get(id=id)
-	form=CityForm(instance=city)
-	if request.method=='POST':
-		form=CityForm(request.POST, instance=city)
-		if form.is_valid():
-			form.save()
-			return redirect('create_city')
-	else:
-		context={'form':form}
-		return render(request, 'address/edit_city.html', context)
-def delete_city(request, id):
-	city=City.objects.get(id=id)
-	city.delete()
-	return redirect('create_city')
+		classes=SchoolClass.objects.all()
+		fees=Fees.objects.all()
+		context={'form':form, 'classes':classes, 'fees':fees }
+		return render(request, 'administration/fees.html', context)
+	
+#view fee payment status of each student classwisw
+def fee_detail(request, cl):
+	students=Student.objects.all().filter(class_name=cl)
+	context={'students':students}
+	return render(request, 'administration/fee_detail.html', context)
+from django.shortcuts import render
+
+
