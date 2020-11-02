@@ -39,7 +39,7 @@ def index(request):
 	'scheduled_exam_count':scheduled_exam_count, 'completed_exam_count':completed_exam_count ,
 	 'ongoing_exam_count':ongoing_exam_count}
 	return render(request, 'administration/index.html', context)
-#Crendering fees page, to view and construct  fees structure
+#rendering fees page, to view and construct  fees structure
 def fees_page(request):
 	form=FeesForm()
 	if request.method=='POST':
@@ -53,11 +53,11 @@ def fees_page(request):
 		context={'form':form, 'classes':classes, 'fees':fees }
 		return render(request, 'administration/fees.html', context)
 	
-#view fee payment status of each student classwisw
+#view fee payment status of each student classwise
 def fee_detail(request, cl):
 	students=Student.objects.all().filter(class_name=cl)
 	context={'students':students}
 	return render(request, 'administration/fee_detail.html', context)
-from django.shortcuts import render
+
 
 
