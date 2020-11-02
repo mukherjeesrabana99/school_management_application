@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block body %}
+{% load static %}
+
+
+    
+
+<link href="{% static 'style.css' %}", rel="stylesheet">
+
+        
+            <div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid">
+						<h1>Session Registration</h1>
+						<form method="POST">
+							{% csrf_token %}
+							{{form.as_p}}
+							<button type="submit">Add Session</button>
+						</form>
+						<h3>Session List</h3>
+						<table>
+							<tr>
+								<th>Session Start</th>
+								<th>Session End</th>
+								<th>Session</th>
+								<th>Date</th>
+								<th>Actions</th>
+							</tr>
+							{% for session in sessions %}
+							<tr>
+								<td>{{session.session_start}}</td>
+								<td>{{session.session_end}}</td>
+								<td>{{session.name}}
+								{% if session.current %}
+								<em>[Current]</em>
+								{% endif %}
+								</td>
+								<td>{{session.date}}</td>
+								<td>
+									<a href="/academics/edit_session/{{session.id}}/">Edit</a>
+									<a href="/academics/delete_session/{{session.id}}/">Delete</a>
+								</td>
+							</tr>
+							{% endfor %}
+						</table>
+					</div>
+{% endblock body %}

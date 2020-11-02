@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block body %}
+{% load static %}
+
+
+    
+
+<link href="{% static 'style.css' %}", rel="stylesheet">
+
+
+        
+            <div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid">
+                    	<h1>Class Registratioin</h1>
+						<form method="POST">
+							{% csrf_token %}
+							{{form.as_p}}
+							<button type="submit">Add Class</button>
+						</form>
+                                Classes
+                                <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                
+                                                <th>Date</th>
+                                                <th>Students</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        {% for class in classes %}
+                                        <tbody>
+                                            <tr>
+                                                <td>{{class.name}}</td>
+                                                <td>{{class.students.class_name}}</td>
+                                                <td>{{class.date}}</td>
+                                                <td>
+                                                	<a href="/academics/edit_class/{{class.id}}/">Edit</a>
+									                <a href="/academics/delete_class/{{class.id}}/">Delete</a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+							{% endfor %}
+						</table>
+					</div> 
+{% endblock body %}

@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block body %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
+<div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid">
+                    	<h4>Students</h4>
+                        <a href="/students/unapproved_students/">Check Unapproved Students</a>
+                    	<table>
+                    		<tr>
+                    			<th>Photo</th>
+                    			<th>Name</th>
+                    			<th>Actions</th>
+                    		</tr>
+                    		{% for student in students %}
+                    		<tr>
+                    			<td>
+                                    {% ifequal student.gender "male" %}
+                                    <img src="{% static 'boy.png' %}">
+                                    {% else %}
+                                    <img src="{% static 'girl.png' %}">
+                                    {% endifequal %}
+                                    
+                                </td>
+                                <td>{{student.name}}</td>
+                                <td>
+                                    
+                                    <a href="/students/student_profile/{{student.id}}/">View Profile</a>
+                                    <a href="/students/edit_student/{{student.id}}/">Edit</a>
+                                    <a href="/students/delete_student/{{student.id}}/">Delete</a>
+                                </td>
+                                    
+                    			
+                    		</tr>
+                    		{% endfor %}
+                    	</table>
+                        <div class="pagination">
+    <span class="step-links">
+        {% if students.has_previous %}
+            <a href="/students/?page=1">&laquo; first</a>
+            <a href="/students/?page={{ students.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ students.number }} of {{ students.paginator.num_pages }}.
+        </span>
+
+        {% if students.has_next %}
+            <a href="/students/?page={{ students.next_page_number }}">next</a>
+            <a href="/students/?page={{ students.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+                        <a href="/students/create_student/">Back</a>
+{% endblock body %}

@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% block body %}
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
+<style>
+     h5{
+          display:inline-block;
+     }
+     img{
+     height:250px;
+     width:250px;
+     display:block;
+     margin: 20px auto;
+     }
+
+</style>
+<div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid">
+                    	<div class="container">
+                    	{% ifequal student.gender "male" %}
+                    	<img class="detail-img" src="{% static 'boy.png' %}">
+                    	{% else %}
+                    	<img class="detail-img" src="{% static 'girl.png' %}">
+                    	{% endifequal %}
+                    	<ul>
+                    	<h5>Name:</h5>
+                    	{{student.name}}
+                    </ul>
+                    <ul>
+                    <h5>Gender:</h5>
+                    	{{student.gender}}
+                    </ul>
+                    <ul>
+                         {% if student.status %}
+                    <h5>Admitted to:</h5>
+                    	Class {{student.class_name}}
+                         {% else %}
+                         Wants Admission To:{{student.class_name}}
+                         {% endif %}
+
+                    </ul>
+                    <ul>
+                    <h5>Registration No:</h5>
+                    	{{student.reg_no}}
+                    </ul>
+                    <ul>
+                    <h5>Blood Group:</h5>
+                    	{{student.blood_group}}
+                    </ul>
+                    <ul>
+                    	<h5>Address</h5>
+                    	{{student.city}}, {{student.country}}
+                    </ul>
+                    <ul>
+                    <h5>Phone:</h5>
+                    	{{student.phone_no}}
+                    </ul>
+                    <ul>
+                    <h5>Email Address:</h5>
+                    	{{student.email}}
+                    </ul>
+                    <ul>
+                    <h5>Guardian Name:</h5>
+                    	{{student.guardian_name}}
+                    </ul>
+                    <ul>
+                    <h5>Guardian Phone Number:</h5>
+                    	{{student.guardian_phone}}
+                    </ul>
+                    <ul>
+                    <h5>Guardian Email Address:</h5>
+                    	{{student.guardian_email}}
+                    </ul>
+                </div>
+                {% if student.status %}
+                <a href="/students/">Back</a>
+                {% else %}
+                <a href="/students/unapproved_students/">Back</a>
+                <a href="/students/approve_student/{{student.id}}/">Approve</a>
+                {% endif %}
+
+
+
+
+
+
+
+
+
+{% endblock body %}

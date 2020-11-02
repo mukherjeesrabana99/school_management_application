@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% block body %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
+<style>
+     h5{
+          display:inline-block;
+     }
+     img{
+     height:250px;
+     width:250px;
+     display:block;
+     margin: 20px auto;
+     }
+
+</style>
+<div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid">
+                    	<div class="container">
+                    	{% ifequal faculty.gender "male" %}
+                    	<img  class="detail-img" src="{% static 'boy.png' %}">
+                    	{% else %}
+                    	<img class="detail-img" src="{% static 'girl.png' %}">
+                    	{% endifequal %}
+                    	<ul>
+                    	<h5>Name:</h5>
+                    	{{faculty.name}}
+                    </ul>
+                    <ul>
+                    <h5>Registration No:</h5>
+                    	{{faculty.reg_no}}
+                    </ul>
+                    <ul>
+                    <h5>Gender:</h5>
+                    	{{faculty.gender}}
+                    </ul>
+                    <ul>
+                    <h5>Email Address:</h5>
+                    	{{faculty.email}}
+                    </ul>
+                    <ul>
+                    <h5>Phone:</h5>
+                    	{{faculty.phone_no}}
+                    </ul>
+                    <ul>
+                    <h5>Address:</h5>
+                    	{{faculty.city}}, {{faculty.country}}
+                    </ul>
+                    <ul>
+                    <h5>Blood Group:</h5>
+                    	{{faculty.blood_group}}
+                    </ul>
+                    <ul>
+                    <h5>Exam:</h5>
+                    	{{faculty.passing_exam}}
+                    </ul>
+                    <ul>
+                    <h5>Schooling:</h5>
+                    	{{faculty.institute_name}}
+                    </ul>
+                    <ul>
+                    <h5>Subject of Interest:</h5>
+                    	{{faculty.subject_of_interest}}
+                    </ul>
+                </div>
+                <a href="/faculty/">Back</a>
+
+
+
+
+{% endblock body %}

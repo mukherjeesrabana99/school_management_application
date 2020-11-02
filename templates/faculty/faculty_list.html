@@ -1,0 +1,42 @@
+
+{% extends 'base.html' %}
+{% block body %}
+{% load static %}
+
+
+    
+
+<link href="{% static 'style.css' %}", rel="stylesheet">
+
+<div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid">
+                        
+                    	<h4>Faculties</h4>
+                    	<table>
+                    		<tr>
+                    			<th>Photo</th>
+                    			<th>Name></th>
+                    			<th>Actions</th>
+                    		</tr>
+                    		{% for faculty in faculties %}
+                    		<tr>
+                    			<td>
+                                    {% ifequal faculty.gender "male" %}
+                                    <img src="{% static 'boy.png' %}">
+                                    {% else %}
+                                    <img src="{% static 'girl.png' %}">
+                                    {% endifequal %}
+                                </td>
+                                    
+                    			<td>{{faculty.name}}</td>
+                    			<td>
+                    				<a href="/faculty/faculty_detail/{{faculty.id}}/">View Profile</a>
+                    				<a href="/faculty/edit_faculty/{{faculty.id}}/">Edit</a>
+                    				<a href="/faculty/delete_faculty/{{faculty.id}}/">Delete</a>
+                    			</td>
+                    		</tr>
+                    		{% endfor %}
+                    	</table>
+                        <a href="/faculty/create_faculty/">Back</a>
+{% endblock body %}

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block body %}
+{% load static %}
+
+
+    
+
+<link href="{% static 'style.css' %}", rel="stylesheet">
+
+        
+            <div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid">
+							<h1>Subject Registration</h1>
+							<form method="POST">
+								{% csrf_token %}
+								{{form.as_p}}
+								<button type="submit">Add Subject</button>
+							</form>
+							<h3>SubjectList</h3>
+							<table>
+								<tr>
+									<th>Subjects</th>
+									<th>Date</th>
+									<th>Actions</th>
+								</tr>
+								{% for subject in subjects %}
+								<tr>
+									<td>{{subject.name}}</td>
+									<td>{{subject.date}}</td>
+									<td>
+										<a href="/academics/edit_subject/{{subject.id}}/">Edit</a>
+										<a href="/academics/delete_subject/{{subject.id}}/">Delete</a>
+									</td>
+								</tr>
+								{% endfor %}
+							</table>
+						</div>
+{% endblock body %}

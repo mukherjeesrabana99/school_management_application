@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block body %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
+<style>
+     h5{
+          display:inline-block;
+     }
+     img{
+     height:250px;
+     width:250px;
+     display:block;
+     margin: 20px auto;
+     }
+
+</style>
+<div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid">
+                    	<div class="container">
+                              <h1>{{agenda.exam.name}} Agenda</h1>
+                              
+                                   <h5>Syllabus</h5>
+                                   <p>{{agenda.syllabus}}</p>
+                              
+{% endblock body %}

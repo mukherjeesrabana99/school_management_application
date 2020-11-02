@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block body %}
+{% load static %}
+
+
+    
+
+<link href="{% static 'style.css' %}", rel="stylesheet">
+
+<div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid">
+                        <h3>Results</h3>
+                        <table>
+                        	<tr>
+                        		<th>Photo</th>
+                        		<th>Students</th>
+                        		<th>Class</th>
+                        		<th>Subjects</th>
+                        		<th>Test Score</th>
+                        		<th>Exam Score</th>
+                        		<th>Total Score</th>
+                        		<th>Grade</th>
+                                    <th>Actions</th>
+                        	</tr>
+                        	{% for result in results %}
+                        	<tr>
+                        		<td>
+                        			{% ifequal result.student.gender "male" %}
+                        			<img src="{% static 'boy.png' %}">
+                        			{% else %}
+                        			<img src="{% static 'girl.png' %}">
+                        			{% endifequal %}
+                        		</td>
+                        		<td>{{result.student.name}}</td>
+                        		<td>{{result.student.class_name}}</td>
+                        		<td>{{result.subject}}</td>
+                        		<td>{{result.test_score}}</td>
+                        		<td>{{result.exam_score}}</td>
+                        		<td>{{result.total}}</td>
+                        		<td>
+                        			{% if result.total > 30 %}
+                                          <h5>A</h5>
+                                          {% elif result.total >= 20 %}
+                                          <h5>B</h5>
+                                          {% elif result.total > 10  %}
+                                           
+                                          <h5>C</h5>
+                                          {% else %}
+                                          <h5>Failed</h5>
+                                          {% endif %}
+                        		</td>
+                                    <td>
+                                          <a href="/results/edit_result/{{result.id}}/">Edit</a>
+                                          <a href="/results/delete_result/{{result.id}}/">Delete</a>
+                                    
+                                    </td>
+                        	</tr>
+                        	{% endfor %}
+                        </table>
+                        <a href="/results/create_result/">Back</a>
+
+{% endblock body %}

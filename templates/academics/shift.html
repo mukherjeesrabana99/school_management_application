@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block body %}
+{% load static %}
+
+
+    
+
+<link href="{% static 'style.css' %}", rel="stylesheet">
+
+        
+            <div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid">
+							<h1>Shift Registration</h1>
+							<form method="POST">
+								{% csrf_token %}
+								{{form.as_p}}
+								<button type="submit">Add Shift</button>
+							</form>
+							<h3>Shift List</h3>
+							<table>
+								<tr>
+									<th>Shifts</th>
+									<th>Start</th>
+									<th>End</th>
+									<th>Actions</th>
+								</tr>
+								{% for shift in shifts %}
+								<tr>
+									<td>{{shift.name}}</td>
+									<td>{{shift.start}}</td>
+									<td>{{shift.end}}</td>
+									<td>
+										<a href="/academics/edit_shift/{{shift.id}}/">Edit</a>
+										<a href="/academics/delete_shift/{{shift.id}}/">Delete</a>
+									</td>
+								</tr>
+								{% endfor %}
+							</table>
+					    </div>
+{% endblock body %}

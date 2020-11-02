@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block body %}
+<div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid">
+                    	<h4>Notices</h4>
+                    	{% for notice in notices %}
+                    	<h5>{{notice.heading}}</h5>
+                    	<p>{{notice.body}}</p>
+                    	Posted on {{notice.date}}
+                    	<a href="/notice/edit_notice/{{notice.id}}/">Edit</a>
+                    	<a href="/notice/delete_notice/{{notice.id}}/">Delete</a>
+
+                    	{% endfor %}
+{% endblock body %}

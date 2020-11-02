@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block body %}
+{% load static %}
+
+
+    
+
+<link href="{% static 'style.css' %}", rel="stylesheet">
+
+        
+            <div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid">
+							<h1>Section Registration</h1>
+							<form method="POST">
+								{% csrf_token %}
+								{{form.as_p}}
+								<button type="submit">Add Section</button>
+							</form>
+							<h3>Section List</h3>
+							<table>
+								<tr>
+									<th>Section></th>
+									<th>Date</th>
+									<th>Actions</th>
+								</tr>
+								{% for section in sections %}
+								<tr>
+									<td>{{section.name}}</td>
+									<td>{{section.date}}</td>
+									<td>
+										<a href="/academics/edit_section/{{section.id}}/">Edit</a>
+										<a href="/academics/delete_section/{{section.id}}/">Delete</a>
+									</td>
+								</tr>
+								{% endfor %}
+							</table>
+					    </div>
+{% endblock body %}

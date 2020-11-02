@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block body %}
+{% load static %}
+
+
+    
+
+<link href="{% static 'style.css' %}", rel="stylesheet">
+
+<div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid">
+                        
+                    	<h4>Members</h4>
+                    	<table>
+                    		<tr>
+                    			<th>Student Photo</th>
+                    			<th>Event</th>
+                    			<th>Students</th>
+                    			<th>Actions</th>
+                    		</tr>
+                    		{% for member in members %}
+                    		<tr>
+                    			<td>
+                    				{% ifequal member.members.gender "male" %}
+                         <img  class="detail-img" src="{% static 'boy.png' %}">
+                         {% else %}
+                         <img class="detail-img" src="{% static 'girl.png' %}">
+                         {% endifequal %}
+                    			</td>
+                    			<td>{{member.event.name}}</td>
+                    			<td>{{member.members.name}}</td>
+                    			<td>
+                    				<a href="/events/view_member/{{member.id}}/">View</a>
+                    				<a href="/events/edit_member/{{member.id}}/">Edit</a>
+                    				<a href="/events/delete_member/{{member.id}}/">Delete</a>
+
+                    			</td>
+                    		</tr>
+                    		{% endfor %}
+                    	</table>
+{% endblock body %}

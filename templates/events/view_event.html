@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block body %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
+<style>
+     h5{
+          display:inline-block;
+     }
+     img{
+     height:250px;
+     width:250px;
+     display:block;
+     margin: 20px auto;
+     }
+
+</style>
+<div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid">
+                    	<div class="container">
+                              <img src="{% static 'event.png' %}">
+                              <ul>
+                                   <h5>Name:</h5>
+                                   {{event.name}}
+                              </ul>
+                              <ul>
+                                   <h5>Description:</h5>
+                                   {{event.description}}
+                              </ul>
+                              <ul>
+                                   <h5>Category:</h5>
+                                   {{event.category}}
+                              </ul>
+                              <ul>
+                                   <h5>Starts On:</h5>
+                                   {{event.start_date}}
+                              </ul>
+                              <ul>
+                                   <h5>Ends On:</h5>
+                                   {{event.end_date}}
+                              </ul>
+                              <ul>
+                                   <h5>Status:</h5>
+                                   {{event.status}}
+                              </ul>
+                              <ul>
+                                   <h5>Created On:</h5>
+                                   {{event.date}}
+                              </ul>
+
+
+
+
+
+
+{% endblock body %}

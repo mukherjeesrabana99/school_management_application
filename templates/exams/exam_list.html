@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block body %}
+{% load static %}
+
+
+    
+
+<link href="{% static 'style.css' %}", rel="stylesheet">
+
+<div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid">
+                        
+                    	<h4>Exams</h4>
+                    	<table>
+                    		<tr>
+                    			<th>Exam</th>
+                    			<th>Session</th>
+                    			<th>Type</th>
+                    			<th>Starts On</th>
+                    			<th>Ends On</th> 
+                    			<th>Status</th>  
+                    			<th>Actions</th>                 		
+                    		</tr>
+                    		{% for exam in exams %}
+                    		<tr>
+                    			<td>{{exam.name}}</td>
+                    			<td>{{exam.session.name}}</td>
+                    			<td>{{exam.exam_type.name}}</td>
+                    			<td>{{exam.start_date}}</td>
+                    			<td>{{exam.end_date}}</td>
+                    			<td>
+                    				{% if exam.status == "Scheduled" %}
+                    				<h6>Scheduled</h6>
+                    				{% elif exam.status == "Completed" %}
+                    				<h6>Completed</h6>
+                    				{% else %}
+                    				<h6>Ongoing</h6>
+                    				{% endif %}
+                    			</td>
+                    			<td>
+                    				<a href="/online_tests/edit_exam/{{exam.id}}/">Edit</a>
+                    				<a href="/online_tests/delete_exam/{{exam.id}}/">Delete</a>
+                    			</td>
+                    		</tr>
+                    		{% endfor %}
+                    	</table>
+{% endblock body %}

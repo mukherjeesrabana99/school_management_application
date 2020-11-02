@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block body %}
+{% load static %}
+
+
+    
+
+<link href="{% static 'style.css' %}", rel="stylesheet">
+
+<div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid">
+                        
+                    	<h4>Agenda</h4>
+                    	<table>
+                    		<tr>
+                    			<td>Exam</td>
+                    			<td>Starts At</td>
+                    			<th>Ends At</th>
+                    			<th>Created At</th>
+                    			<th>Actions</th>
+                    		</tr>
+                    		{% for agenda in agenda %}
+                    		<tr>
+                    			<td>{{agenda.exam.name}}</td>
+                    			<td>{{agenda.start_time}}</td>
+                    			<td>{{agenda.end_time}}</td>
+                    			<td>{{agenda.date}}</td>
+                    			<td>
+                    				<a href="/online_tests/view_agenda/{{agenda.id}}/">View Agenda</a>
+                    				<a href="/online_tests/edit_agenda/{{agenda.id}}/">Edit Agenda</a>
+                    				<a href="/online_tests/delete_agenda/{{agenda.id}}/">Delete Agenda</a>
+                    			</td>
+                    		</tr>
+                    		{% endfor %}
+                    	</table>
+{% endblock body %}

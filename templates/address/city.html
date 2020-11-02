@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block body %}
+{% load static %}
+
+
+    
+
+<link href="{% static 'style.css' %}", rel="stylesheet">
+
+        
+            <div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid">
+							<h1>City Registration</h1>
+							<form method="POST">
+								{% csrf_token %}
+								{{form.as_p}}
+								<button type="submit">Add City</button>
+							</form>
+							<h3>City List</h3>
+							<table>
+								<tr>
+									<th>Cities</th>
+									<th>Country</th>
+									<th>Actions</th>
+								</tr>
+								{% for city in cities %}
+								<tr>
+									<td>{{city.name}}</td>
+									<td>{{city.country}}</td>
+									<td>
+										<a href="/address/edit_city/{{city.id}}/">Edit</a>
+										<a href="/address/delete_city/{{city.id}}/">Delete</a>
+									</td>
+								</tr>
+								{% endfor %}
+							</table>
+					    </div>
+{% endblock body %}

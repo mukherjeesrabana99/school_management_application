@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block body %}
+{% load static %}
+
+
+    
+
+<link href="{% static 'style.css' %}", rel="stylesheet">
+
+<div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid">
+                        
+                    	<h4>Events</h4>
+                    	<table>
+                    		<tr>
+                    			<th>Photo</th>
+                    			<th>Event</th>
+                    			<th>Category</th>
+                    			<th>Date</th>
+                    			<th>Actions</th>
+                    		</tr>
+                    		{% for event in events %}
+                    		<tr>
+                    			<td><img src="{% static 'event.png' %}"></td>
+                    			<td>{{event.name}}</td>
+                    			<td>{{event.category.name}}</td>
+                    			<td>{{event.date}}</td>
+                    			<td>
+                    				<a href="/events/view_event/{{event.id}}/">View</a>
+                    				<a href="/events/edit_event/{{event.id}}/">edit</a>
+                    				<a href="/events/delete_event/{{event.id}}/">Delete</a>
+                    			</td>
+                    		</tr>
+                    		{% endfor %}
+                    	</table>
+{% endblock body %}

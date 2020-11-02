@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block body %}
+        
+            <div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid">
+                    	
+<h3>Edit Session</h3>
+<form method="POST">
+	{% csrf_token %}
+	{{form}}
+	<button type="submit">Save</button>
+</form>
+</div>
+{% endblock body %}

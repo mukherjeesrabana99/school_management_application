@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block body %}
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
+<div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid">
+                    	<form method='POST'>
+                    		{% csrf_token %}
+                    		{{form}}
+                    		<button type="submit">Submit</button>
+                    	</form>
+
+{% endblock body %}

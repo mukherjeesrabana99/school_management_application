@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block body %}
+{% load static %}
+
+
+    
+
+<link href="{% static 'style.css' %}", rel="stylesheet">
+
+<div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid">
+                        
+                    	<h4>Categories</h4>
+                    	<table>
+                    		<tr>
+                    			<th>Photo</th>
+                    			<th>Category</th>
+                    			<th>Code</th>
+                    			<th>Date</th>
+                    			<th>Actions</th>
+                    		</tr>
+                    		{% for cat in cats %}
+                    		<tr>
+                    			<td>
+                    			<img src="{% static 'category.png' %}">
+                    			</td>
+                    			<td>{{cat.name}}</td>
+                    			<td>{{cat.code}}</td>
+                    			<td>{{cat.date}}</td>
+                    			<td>
+                    				<a href="/events/edit_category/{{cat.id}}/">Edit</a>
+                    				<a href="/events/delete_category/{{cat.id}}/">Delete</a>
+
+                    			</td>
+                    		</tr>
+                    		{% endfor %}
+                    	</table>
+{% endblock body %}

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block body %}
+{% load static %}
+
+
+    
+
+<link href="{% static 'style.css' %}", rel="stylesheet">
+
+<div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid">
+                        
+                    	<h4> Exam Types</h4>
+                    	<table>
+                    		<tr>
+                    			<td>Exam Type</td>
+                    			<td>Created at</td>
+                    			<td>Actions</td>
+                    		</tr>
+                    		{% for type in types %}
+                    		<tr>
+                    			<td>{{type.name}}</td>
+                    			<td>{{type.date}}</td>
+                    			<td>
+                    				<a href="/online_tests/edit_type/{{type.id}}/">Edit</a>
+                    				<a href="/online_tests/delete_type/{{type.id}}/">Delete</a>
+                    			</td>
+                    		</tr>
+                    		{% endfor %}
+                    	</table>
+
+{% endblock body %}

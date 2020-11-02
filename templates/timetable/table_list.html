@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% block body %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
+<div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid">
+                    	<h3>Time Tables</h3>
+                    	{% for table in tables %}
+                    	<h3>{{table.class_name}} Time Table</h3>
+                    	<table>
+                    		<tr>
+                    			<th>Days</th>
+                    			<th>{{table.sub1_time}}</th>
+                    			<th>{{table.sub2_time}}</th>
+                    			<th>{{table.break_time}}</th>}}
+                    			<th>{{table.scl_over_time}}</th>
+                    			
+                    		</tr>
+                    		<tr>
+                    			<td>{{table.day1}}</td>
+                    			<td>{{table.sub1}}</td>
+                    			<td>{{table.sub2}}</td>
+                    			<td>BREAK</td>
+                    			<td>SCHOOL OVER</td>
+
+                    		</tr>
+                    		<tr>
+                    			<td>{{table.day2}}</td>
+                    			<td>{{table.sub1}}</td>
+                    			<td>{{table.sub2}}</td>
+                    			<td>BREAK</td>
+                    			<td>SCHOOL OVER</td>
+
+                    		</tr>
+                    		<tr>
+                    			<td>{{table.day3}}</td>
+                    			<td>{{table.sub1}}</td>
+                    			<td>{{table.sub2}}</td>
+                    			<td>BREAK</td>
+                    			<td>SCHOOL OVER</td>
+
+                    		</tr>
+                    		<tr>
+                    			<td>{{table.day4}}</td>
+                    			<td>{{table.sub1}}</td>
+                    			<td>{{table.sub2}}</td>
+                    			<td>BREAK</td>
+                    			<td>SCHOOL OVER</td>
+
+                    		</tr>
+                    		<tr>
+                    			<td>{{table.day5}}</td>
+                    			<td>{{table.sub1}}</td>
+                    			<td>{{table.sub2}}</td>
+                    			<td>BREAK</td>
+                    			<td>SCHOOL OVER</td>
+
+                    		</tr>
+                    	</table>
+
+                    				<a href="/timetable/edit_timetable/{{table.id}}/">Edit</a>
+                    				<a href="/timetable/delete_timetable/{{table.id}}/">Delete</a>
+                    			
+                    	{% endfor %}
+                    	
+{% endblock body %}
