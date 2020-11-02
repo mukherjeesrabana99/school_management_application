@@ -1,33 +1,30 @@
 from django.urls import path
 from . import views
 urlpatterns=[
-# Class URLS
-path('classes/', views.create_class, name='create_class'),
-path('edit_class/<int:cl_id>/', views.edit_class, name='edit_class'),
-path('delete_class/<int:cl_id>/', views.delete_class, name='delete_class'),
+#EVENT CAREGORY URLS
+path('categories/', views.category_list, name='category_list'),
+path('create_category/', views.create_category, name='create_category'),
+path('edit_category/<int:id>/', views.edit_category, name='edit_category'),
+path('delete_category/<int:id>/', views.delete_category, name='delete_category'),
+#EVENT EVENT URLS
+path('', views.event_list, name='event_list'),
+path('create_event/', views.create_event, name='create_event'),
+path('view_event/<int:id>/', views.view_event, name='view_event'),
+path('edit_event/<int:id>/', views.edit_event, name='edit_event'),
+path('delete_event/<int:id>/', views.delete_event, name='delete_event'),
 
-# SECTION URLS
-path('sections/', views.create_section, name='create_section'),
-path('edit_section/<int:sec_id>/', views.edit_section, name='edit_section'),
-path('delete_section/<int:sec_id>/', views.delete_section, name='delete_section'),
+#EVENT MEMBER URLS
+path('members/', views.member_list, name='member_list'),
+path('create_member/', views.create_member, name='create_member'),
+path('view_member/<int:id>/', views.view_member, name='view_member'),
+path('edit_member/<int:id>/', views.edit_member, name='edit_member'),
+path('delete_member/<int:id>/', views.delete_member, name='delete_member'),
 
-# SEESION URLS
-path('sessions/', views.create_session, name='create_session'),
-path('edit_session/<int:ses_id>/', views.edit_session, name='edit_session'),
-path('delete_session/<int:ses_id>/', views.delete_session, name='delete_session'),
-# SUBJECT URLS
-path('subjects/', views.create_subject, name='create_subject'),
-path('edit_subject/<int:sub_id>/', views.edit_subject, name='edit_subject'),
-path('delete_subject/<int:sub_id>/', views.delete_subject, name='delete_subject'),
+#EVENT AGENDA URLS
+path('agenda/', views.agenda_list, name='agenda_list'),
+path('create_agenda/', views.create_agenda, name='create_agenda'),
+path('edit_agenda/<int:id>/', views.edit_agenda, name='edit_agenda'),
+path('delete_agenda/<int:id>/', views.delete_agenda, name='delete_agenda'),
 
-# SHIFT URLS
-path('shifts/', views.create_shift, name='create_shift'),
-path('edit_shift/<int:shift_id>/', views.edit_shift, name='edit_shift'),
-path('delete_shift/<int:shift_id>/', views.delete_shift, name='delete_shift'),
-
-# REGISTERED CLASS URLS
-path('registered_class/', views.create_registeredclass, name='create_registeredclass'),
-path('edit_regclass/<int:cl_id>/', views.edit_regclass, name='edit_regclass'),
-path('delete_regclass/<int:cl_id>/', views.delete_regclass, name='delete_regclass'),
 
 ]
