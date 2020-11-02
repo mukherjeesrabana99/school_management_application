@@ -5,8 +5,9 @@
 <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid">
-                    	<h4>Students</h4>
-                        <a href="/students/waiting_students/">Check Waiting Students</a>
+                        {% if students %}
+                    	<h4>Unapproved Students</h4>
+
                     	<table>
                     		<tr>
                     			<th>Photo</th>
@@ -25,32 +26,17 @@
                                 </td>
                                 <td>{{student.name}}</td>
                                 <td>
-                                    
                                     <a href="/students/student_profile/{{student.id}}/">View Profile</a>
-                                    <a href="/students/edit_student/{{student.id}}/">Edit</a>
-                                    <a href="/students/delete_student/{{student.id}}/">Delete</a>
+                                    <a href="/students/approve_student/{{student.id}}/">Approve</a>
+                                    <a href="/students/cancel_student/{{student.id}}/">Cancel</a>
                                 </td>
                                     
                     			
                     		</tr>
                     		{% endfor %}
                     	</table>
-                        <div class="pagination">
-    <span class="step-links">
-        {% if students.has_previous %}
-            <a href="/students/?page=1">&laquo; first</a>
-            <a href="/students/?page={{ students.previous_page_number }}">previous</a>
-        {% endif %}
+                        {% else %}
+                        <h4>No waiting students found</h4>
+                        {% endif %}
 
-        <span class="current">
-            Page {{ students.number }} of {{ students.paginator.num_pages }}.
-        </span>
-
-        {% if students.has_next %}
-            <a href="/students/?page={{ students.next_page_number }}">next</a>
-            <a href="/students/?page={{ students.paginator.num_pages }}">last &raquo;</a>
-        {% endif %}
-    </span>
-</div>
-                        <a href="/students/create_student/">Back</a>
 {% endblock body %}

@@ -6,10 +6,11 @@
 <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid">
+                    	Edit Student
                     	<form method='POST'>
                     		{% csrf_token %}
                     		{{form}}
-                    		<button type="submit">Submit</button>
+                    		<button type="submit">Save</button>
                     	</form>
 
 {% endblock body %}

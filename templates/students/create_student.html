@@ -3,9 +3,10 @@
 <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid">
+                    	Student Registration
                     	<form method='POST' enctype="multiple/form-data">
                     		{% csrf_token %}
                     		{{form.as_p}}
-                    		<button type='submit'>Submit</button>
+                    		<button type='submit'>Add Student</button>
                     	</form>
 {% endblock body %}
