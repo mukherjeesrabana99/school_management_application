@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .models import Country, City
 from .forms import CountryForm, CityForm
 # Create your views here.
+# Applying CRUD to Country Model
 def create_country(request):
 	form=CountryForm()
 	if request.method=='POST':
@@ -28,6 +29,7 @@ def delete_country(request, id):
 	country=Country.objects.get(id=id)
 	country.delete()
 	return redirect('create_country')
+# Applying CRUD to City Model
 def create_city(request):
 	form=CityForm()
 	if request.method=='POST':
