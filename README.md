@@ -20,7 +20,7 @@ This folder contains a urls.py built in within itself to define url patterns and
 
 
 
-4.Lastly the 'templates' and 'static' folders are created, and kept maintaing the same directory level with those app folders.
+4.Lastly the 'templates' and 'static' folders are created, and kept preserving the same directory hierarchy with those app folders.
 
 
 
