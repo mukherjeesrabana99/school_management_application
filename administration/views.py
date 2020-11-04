@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect
 from academics.models import Session, SchoolClass, Section, Subject, Shift, RegisteredClass
-from .models import School, Fees
+from .models import School, Fees, Attendance
 from faculty.models import Faculty
 from students.models import Student
 from notice.models import Notice
-from .forms import SchoolForm, FeesForm
+from .forms import SchoolForm, FeesForm, AttendanceForm
 from events.models import Event, EventMember
 from students.models import Student
 from online_tests.models import Exam, ExamMember
@@ -58,6 +58,32 @@ def fee_detail(request, cl):
 	students=Student.objects.all().filter(class_name=cl)
 	context={'students':students}
 	return render(request, 'administration/fee_detail.html', context)
-
+#Admin can view attendance list
+def attendance_list(request):
+	attendance=Attendance.objects.all()
+	context={'attendance':attendance}
+	return render(request, 'administration/attendance_list.html', context)
+def create_attendance(request):
+	form=AttendanceForm()
+	if request.method=='POST':
+		form=AttendanceForm(request.POST)
+		if form.is_valid():
+			form.save()
+			return redirect('attendance_list')
+	else:
+		context={'form':form}
+		return render(request, 'administration/create_attendance.html', context)
+#Admin can edit attendance
+def edit_attendance(request, id):
+	attendance=Attendance.objects.get(id=id)
+	form=AttendanceForm(instance=attendance)
+	if request.method=='POST':
+		form=AttendanceForm(request.POST, instance=attendance)
+		if form.is_valid():
+			form.save()
+			return redirect('attendance_list')
+	else:
+		context={'form':form}
+		return render(request, 'administration/edit_attendance.html', context)
 
 
