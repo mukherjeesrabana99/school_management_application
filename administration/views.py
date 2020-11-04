@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from academics.models import Session, SchoolClass, Section, Subject, Shift, RegisteredClass
+from academics.models import Session, SchoolClass, Section,Shift, Subject, RegisteredClass
 from .models import School, Fees, Attendance
 from faculty.models import Faculty
 from students.models import Student
@@ -15,8 +15,8 @@ from online_tests.models import Exam, ExamMember
 def index(request):
 	class_count=SchoolClass.objects.all().count()
 	section_count=Section.objects.all().count()
-	shift_count=Shift.objects.all().count()
 	subject_count=Subject.objects.all().count()
+	shift_count=Shift.objects.all().count()
 	regcl_count=RegisteredClass.objects.all().count()		
 	session=Session.objects.get(current=True)
 	notices=Notice.objects.all().order_by('-id')
@@ -34,7 +34,8 @@ def index(request):
 
 	context={'session':session, 'notices':notices, 'notice_count':notice_count,   'school':school, 
 	'faculty_count':faculty_count, 'student_count':student_count, 'class_count':class_count,
-	'shift_count':shift_count, 'subject_count':subject_count, 'section_count':section_count,
+	'shift_count':shift_count,
+	 'subject_count':subject_count, 'section_count':section_count,
 	'regcl_count':regcl_count, 'event_count':event_count, 'member_count':member_count,
 	'scheduled_exam_count':scheduled_exam_count, 'completed_exam_count':completed_exam_count ,
 	 'ongoing_exam_count':ongoing_exam_count}
