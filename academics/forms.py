@@ -1,5 +1,5 @@
 from django import forms
-from .models import SchoolClass, Section, Session, Shift, RegisteredClass, Subject
+from .models import SchoolClass, Section, Session,Shift, RegisteredClass, Subject
 class SchoolClassForm(forms.ModelForm):
 	class Meta:
 		model=SchoolClass
@@ -14,6 +14,15 @@ class SectionForm(forms.ModelForm):
 		widgets={
 		'name':forms.TextInput(attrs={'class':'form-control'})
 		}
+class ShiftForm(forms.ModelForm):
+	class Meta:
+		model=Shift
+		fields='__all__'
+		widgets={
+		'name':forms.TextInput(attrs={'class':'form-control'}),
+		'StartTime':forms.TextInput(attrs={'class':'form-control', 'type':'time'}),
+		'EndTime':forms.TextInput(attrs={'class':'form-control', 'type':'time'}),
+		}
 class SessionForm(forms.ModelForm):
 	class Meta:
 		model=Session
@@ -22,15 +31,6 @@ class SessionForm(forms.ModelForm):
 		'StartYear':forms.TextInput(attrs={'class':'form-control', 'type':'date'}),
 		'EndYear':forms.TextInput(attrs={'class':'form-control', 'type':'date'}),
 		'name':forms.TextInput(attrs={'class':'form-control'})
-		}
-class ShiftForm(forms.ModelForm):
-	class Meta:
-		model=Shift
-		fields='__all__'
-		widgets={
-		'name':forms.TextInput(attrs={'class':'form-control'}),
-		'start':forms.Select(attrs={'class':'form-control', 'type':'time'}),
-		'end':forms.Select(attrs={'class':'form-control', 'type':'time'})
 		}
 class SubjectForm(forms.ModelForm):
 	class Meta:

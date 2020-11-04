@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
-from .models import SchoolClass, Section, Session, Shift,  RegisteredClass, Subject
-from.forms import SchoolClassForm, SectionForm, SessionForm,  ShiftForm, RegisteredClassForm, SubjectForm
+from .models import SchoolClass, Section, Session,Shift,   RegisteredClass, Subject
+from.forms import SchoolClassForm, SectionForm,ShiftForm, SessionForm,  RegisteredClassForm, SubjectForm
 from django.http import HttpResponse, HttpResponseRedirect,JsonResponse
 # Create your views here.
 # Admin can create class
@@ -120,7 +120,7 @@ def delete_shift(request, shift_id):
 	shift=Shift.objects.get(id=shift_id)
 	shift.delete()
 	return redirect('create_shift')
-# Create registered class using  Registered Class Model
+#Create registered class using  Registered Class Model
 def create_registeredclass(request):
 	form=RegisteredClassForm()
 	if request.method=='POST':
