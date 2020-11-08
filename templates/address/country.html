@@ -10,31 +10,60 @@
         
             <div id="layoutSidenav_content">
                 <main>
-                    <div class="container-fluid">
-							<h1>Country Registration</h1>
-							<form method="POST">
-								{% csrf_token %}
-								{{form.as_p}}
-								<button type="submit">Add Country</button>
-							</form>
-							<h3>Country List</h3>
-							<table>
-								<tr>
-									<th>Countries</th>
+                    <div class="container-fluid" style="padding:3%;">
+							<!-- Form Card -->
+                        <div class="card">
+                          <div class="card-header bg-info">Register Country</h5></div>
+                          <div class="card-body">
+                           <div class="form-group">
+                                <form method="POST">
+                                  {% csrf_token %}
+                                {{form.as_p}} 
+                                <button type="submit" class="btn btn-info">Add Country</button> 
+                                </form>
+                                <!-- end of form -->
+                              </div>
+                              <!-- end of form-group div -->
+                            </div>
+                            <!-- end of card-body -->
+                        </div>
+                        <!-- end of card -->
+
+                        <!-- Table Card -->
+                        <div class="card">
+                          <div class="card-header bg-info"><i class="fas fa-table mr-1"></i>Countries</h5></div>
+                          <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                            <tr>
+                                                <th>Countries</th>
 									
-									<th>Date</th>
-									<th>Actions</th>
-								</tr>
-								{% for country in countries %}
-								<tr>
-									<td>{{country.name}}</td>
-									<td>{{country.date}}</td>
-									<td>
-										<a href="/address/edit_country/{{country.id}}/">Edit</a>
-										<a href="/address/delete_country/{{country.id}}/">Delete</a>
-									</td>
-								</tr>
-								{% endfor %}
-							</table>
-					    </div>
+												<th>Date</th>
+												<th>Actions</th>
+                                            </tr>
+                                    </thead>
+                                    <!-- looping over each of the countries to get each of them rendered -->
+                                    {% for country in countries %}
+                                    <tbody>
+                                        <tr>
+                                    
+                                            <td>{{country.name}}</td>
+											<td>{{country.date}}</td>
+											<td>
+												<a class="btn btn-sm btn-warning" href="/address/edit_country/{{country.id}}/">Edit</a>
+												<a class="btn btn-sm btn-danger" href="/address/delete_country/{{country.id}}/">Delete</a>
+											</td>
+                                        </tr>
+                                    </tbody>
+                                    {% endfor %}
+                                    <!-- end of looping -->
+                                </table>
+                            </div>
+                            <!-- end of table-responsive div -->
+                            </div>
+                            <!-- end of card-body div -->
+                        </div>
+                        <!-- end of card -->
+                    
 {% endblock body %}

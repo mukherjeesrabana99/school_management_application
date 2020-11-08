@@ -10,30 +10,60 @@
         
             <div id="layoutSidenav_content">
                 <main>
-                    <div class="container-fluid">
-							<h1>City Registration</h1>
-							<form method="POST">
-								{% csrf_token %}
-								{{form.as_p}}
-								<button type="submit">Add City</button>
-							</form>
-							<h3>City List</h3>
-							<table>
-								<tr>
-									<th>Cities</th>
-									<th>Country</th>
-									<th>Actions</th>
-								</tr>
-								{% for city in cities %}
-								<tr>
-									<td>{{city.name}}</td>
-									<td>{{city.country}}</td>
-									<td>
-										<a href="/address/edit_city/{{city.id}}/">Edit</a>
-										<a href="/address/delete_city/{{city.id}}/">Delete</a>
-									</td>
-								</tr>
-								{% endfor %}
-							</table>
-					    </div>
+                    <div class="container-fluid" style="padding:3%;">
+							 <!-- Form Card -->
+                        <div class="card">
+                          <div class="card-header bg-info">Register City</h5></div>
+                          <div class="card-body">
+                           <div class="form-group">
+                                <form method="POST">
+                                  {% csrf_token %}
+                                {{form.as_p}} 
+                                <button type="submit" class="btn btn-info">Add City</button> 
+                                </form>
+                                <!-- end of form -->
+                              </div>
+                              <!-- end of form-group div -->
+                            </div>
+                            <!-- end of card-body -->
+                        </div>
+                        <!-- end of card -->
+
+                         <!-- Table Card -->
+                        <div class="card">
+                          <div class="card-header bg-info"><i class="fas fa-table mr-1"></i>Cities</h5></div>
+                          <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                            <tr>
+                                                <th>Cities</th>
+												<th>Country</th>
+												<th>Actions</th>
+                                            </tr>
+                                    </thead>
+                                    <!-- looping over each of the cities to get each of them rendered -->
+                                    {% for city in cities %}
+                                    <tbody>
+                                        <tr>
+                                    
+                                            <td>{{city.name}}</td>
+											<td>{{city.country}}</td>
+											<td>
+												<a class="btn btn-sm btn-warning" href="/address/edit_city/{{city.id}}/">Edit</a>
+												<a class="btn btn-sm btn-danger" href="/address/delete_city/{{city.id}}/">Delete</a>
+											</td>
+                                        </tr>
+                                    </tbody>
+                                    {% endfor %}
+                                    <!-- end of looping -->
+                                </table>
+                            </div>
+                            <!-- end of table-responsive div -->
+                            </div>
+                            <!-- end of card-body div -->
+                        </div>
+                        <!-- end of card -->
+                    
+
 {% endblock body %}
