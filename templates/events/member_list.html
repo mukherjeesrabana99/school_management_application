@@ -9,34 +9,53 @@
 
 <div id="layoutSidenav_content">
                 <main>
-                    <div class="container-fluid">
-                        
-                    	<h4>Members</h4>
-                    	<table>
-                    		<tr>
-                    			<th>Student Photo</th>
-                    			<th>Event</th>
-                    			<th>Students</th>
-                    			<th>Actions</th>
-                    		</tr>
-                    		{% for member in members %}
-                    		<tr>
-                    			<td>
-                    				{% ifequal member.members.gender "male" %}
-                         <img  class="detail-img" src="{% static 'boy.png' %}">
-                         {% else %}
-                         <img class="detail-img" src="{% static 'girl.png' %}">
-                         {% endifequal %}
-                    			</td>
-                    			<td>{{member.event.name}}</td>
-                    			<td>{{member.members.name}}</td>
-                    			<td>
-                    				<a href="/events/view_member/{{member.id}}/">View</a>
-                    				<a href="/events/edit_member/{{member.id}}/">Edit</a>
-                    				<a href="/events/delete_member/{{member.id}}/">Delete</a>
+                    <div class="container-fluid" style="padding:3%;">
 
-                    			</td>
-                    		</tr>
-                    		{% endfor %}
-                    	</table>
+                         <!-- Table Card -->
+                        <div class="card">
+                          <div class="card-header bg-info"><i class="fas fa-table mr-1"></i>Members</h5></div>
+                          <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                            <tr>
+                                                  <th>Student Photo</th>
+                                                  <th>Event</th>
+                                                  <th>Students</th>
+                                                  <th>Actions</th>
+                                            </tr>
+                                    </thead>
+                                    <!-- looping over each of the Members to get each of them rendered -->
+                                    {% for member in members %}
+                                    <tbody>
+                                        <tr>
+                                    
+                                            <td>
+
+                                             {% ifequal member.members.gender "male" %}
+                                             <img  class="detail-img" src="{% static 'boy.png' %}">
+                                             {% else %}
+                                             <img class="detail-img" src="{% static 'girl.png' %}">
+                                             {% endifequal %}
+                                                       </td>
+                                                       <td>{{member.event.name}}</td>
+                                                       <td>{{member.members.name}}</td>
+                                                       <td>
+                                                            <a class="btn btn-sm btn-info" href="/events/view_member/{{member.id}}/">View</a>
+                                                            <a class="btn btn-sm btn-warning" href="/events/edit_member/{{member.id}}/">Edit</a>
+                                                            <a class="btn btn-sm btn-danger" href="/events/delete_member/{{member.id}}/">Delete</a>
+
+                                                       </td>
+                                        </tr>
+                                    </tbody>
+                                    {% endfor %}
+                                    <!-- end of looping -->
+                                </table>
+                            </div>
+                            <!-- end of table-responsive div -->
+                            </div>
+                            <!-- end of card-body div -->
+                        </div>
+                        <!-- end of card -->
+                    
 {% endblock body %}

@@ -9,34 +9,55 @@
 
 <div id="layoutSidenav_content">
                 <main>
-                    <div class="container-fluid">
-                        
-                    	<h4>Agenda List</h4>
-                    	<table>
-                    		<tr>
-                    			
-                    			<th>Event</th>
-                    			<th>session</th>
-                    			<th>Starts At</th>
-                    			<th>Ends At</th>
+                    <div class="container-fluid" style="padding:3%;">
+                         <!-- Table Card -->
+                        <div class="card">
+                          <div class="card-header bg-info"><i class="fas fa-table mr-1"></i>Agenda</h5></div>
+                          <div class="card-body">
+                            <div class="table-responsive">
 
-                    			<th>Speaker</th>
-                    			<th>Actions</th>
-                    		</tr>
-                    		{% for agenda in agenda %}
-                    		<tr>
-                    			
-                    			<td>{{agenda.event.name}}</td>
-                    			<td>{{agenda.session_name}}</td>
-                    			<td>{{agenda.start_time}}</td>
-                    			<td>{{agenda.end_time}}</td>
-                    			<td>{{agenda.speaker_name}}</td>
-                    			<td>
-                    				<a href="/events/edit_agenda/{{agenda.id}}/">Edit</a>
-                    				<a href="/events/delete_agenda/{{agenda.id}}/">Delete</a>
 
-                    			</td>
-                    		</tr>
-                    		{% endfor %}
-                    	</table>
+                              <table class="table">
+
+                                   <thead>
+
+                                        <tr>
+
+                                             <th>Event</th>
+                                             <th>session</th>
+                                             <th>Starts At</th>
+                                             <th>Ends At</th>
+
+                                             <th>Speaker</th>
+                                             <th>Actions</th>
+                                       </tr>
+                                   </thead>
+                                    <!-- looping over each of the Agenda to get each of them rendered -->
+                                    {% for agenda in agenda %}
+                                    <tbody>
+                                        <tr>
+
+                                    
+                                             <td>{{agenda.event.name}}</td>
+                                             <td>{{agenda.session_name}}</td>
+                                             <td>{{agenda.start_time}}</td>
+                                             <td>{{agenda.end_time}}</td>
+                                             <td>{{agenda.speaker_name}}</td>
+                                             <td>
+                                                  <a class="btn btn-sm btn-warning" href="/events/edit_agenda/{{agenda.id}}/">Edit</a>
+                                                  <a class="btn btn-sm btn-danger" href="/events/delete_agenda/{{agenda.id}}/">Delete</a>
+
+                                             </td>
+                                        </tr>
+                                    </tbody>
+                                    {% endfor %}
+                                    <!-- end of looping -->
+                              </table>
+                            </div>
+                            <!-- end of table-responsive div -->
+                            </div>
+                            <!-- end of card-body div -->
+                        </div>
+                        <!-- end of card -->
+                    
 {% endblock body %}

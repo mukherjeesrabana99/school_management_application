@@ -9,31 +9,49 @@
 
 <div id="layoutSidenav_content">
                 <main>
-                    <div class="container-fluid">
-                        
-                    	<h4>Categories</h4>
-                    	<table>
-                    		<tr>
-                    			<th>Photo</th>
-                    			<th>Category</th>
-                    			<th>Code</th>
-                    			<th>Date</th>
-                    			<th>Actions</th>
-                    		</tr>
-                    		{% for cat in cats %}
-                    		<tr>
-                    			<td>
-                    			<img src="{% static 'category.png' %}">
-                    			</td>
-                    			<td>{{cat.name}}</td>
-                    			<td>{{cat.code}}</td>
-                    			<td>{{cat.date}}</td>
-                    			<td>
-                    				<a href="/events/edit_category/{{cat.id}}/">Edit</a>
-                    				<a href="/events/delete_category/{{cat.id}}/">Delete</a>
+                    <div class="container-fluid" style="padding:3%;">
 
-                    			</td>
-                    		</tr>
-                    		{% endfor %}
-                    	</table>
+                          <!-- Table Card -->
+                        <div class="card">
+                          <div class="card-header bg-info"><i class="fas fa-table mr-1"></i>Categories</h5></div>
+                          <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                            <tr>
+                                                  <th>Photo</th>
+                                                  <th>Category</th>
+                                                  <th>Code</th>
+                                                  <th>Date</th>
+                                                  <th>Actions</th>
+                                            </tr>
+                                    </thead>
+                                    <!-- looping over each of the Categories to get each of them rendered -->
+                                    {% for cat in cats %}
+                                    <tbody>
+                                        <tr>
+                                    
+                                             <td>
+                                             <img src="{% static 'category.png' %}">
+                                             </td>
+                                             <td>{{cat.name}}</td>
+                                             <td>{{cat.code}}</td>
+                                             <td>{{cat.date}}</td>
+                                             <td>
+                                                  <a class="btn btn-sm btn-warning" href="/events/edit_category/{{cat.id}}/">Edit</a>
+                                                  <a class="btn btn-sm btn-danger" href="/events/delete_category/{{cat.id}}/">Delete</a>
+
+                                             </td>
+                                        </tr>
+                                    </tbody>
+                                    {% endfor %}
+                                    <!-- end of looping -->
+                                </table>
+                            </div>
+                            <!-- end of table-responsive div -->
+                            </div>
+                            <!-- end of card-body div -->
+                        </div>
+                        <!-- end of card -->
+                    
 {% endblock body %}

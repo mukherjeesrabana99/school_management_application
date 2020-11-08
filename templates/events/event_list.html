@@ -9,29 +9,47 @@
 
 <div id="layoutSidenav_content">
                 <main>
-                    <div class="container-fluid">
-                        
-                    	<h4>Events</h4>
-                    	<table>
-                    		<tr>
-                    			<th>Photo</th>
-                    			<th>Event</th>
-                    			<th>Category</th>
-                    			<th>Date</th>
-                    			<th>Actions</th>
-                    		</tr>
-                    		{% for event in events %}
-                    		<tr>
-                    			<td><img src="{% static 'event.png' %}"></td>
-                    			<td>{{event.name}}</td>
-                    			<td>{{event.category.name}}</td>
-                    			<td>{{event.date}}</td>
-                    			<td>
-                    				<a href="/events/view_event/{{event.id}}/">View</a>
-                    				<a href="/events/edit_event/{{event.id}}/">edit</a>
-                    				<a href="/events/delete_event/{{event.id}}/">Delete</a>
-                    			</td>
-                    		</tr>
-                    		{% endfor %}
-                    	</table>
+                    <div class="container-fluid" style="padding:3%;">
+
+                         <!-- Table Card -->
+                        <div class="card">
+                          <div class="card-header bg-info"><i class="fas fa-table mr-1"></i>Events</h5></div>
+                          <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                            <tr>
+                                                  <th>Photo</th>
+                                                  <th>Event</th>
+                                                  <th>Category</th>
+                                                  <th>Date</th>
+                                                  <th>Actions</th>
+                                            </tr>
+                                    </thead>
+                                    <!-- looping over each of the Events to get each of them rendered -->
+                                    {% for event in events %}
+                                    <tbody>
+                                        <tr>
+                                    
+                                             <td><img src="{% static 'event.png' %}"></td>
+                                             <td>{{event.name}}</td>
+                                             <td>{{event.category.name}}</td>
+                                             <td>{{event.date}}</td>
+                                             <td>
+                                                  <a class="btn btn-sm btn-info" href="/events/view_event/{{event.id}}/">View</a>
+                                                  <a class="btn btn-sm btn-warning" href="/events/edit_event/{{event.id}}/">edit</a>
+                                                  <a class="btn btn-sm btn-danger" href="/events/delete_event/{{event.id}}/">Delete</a>
+                                             </td>
+                                        </tr>
+                                    </tbody>
+                                    {% endfor %}
+                                    <!-- end of looping -->
+                                </table>
+                            </div>
+                            <!-- end of table-responsive div -->
+                            </div>
+                            <!-- end of card-body div -->
+                        </div>
+                        <!-- end of card -->
+                    
 {% endblock body %}
