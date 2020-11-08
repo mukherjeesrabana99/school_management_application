@@ -22,7 +22,7 @@ def create_timetable(request):
 def edit_timetable(request, id):
 	table=Timetable.objects.get(id=id)
 	form=TableForm(instance=table)
-	if request.metho=='POST':
+	if request.method=='POST':
 		form=TableForm(request.POST, instance=table)
 		if form.is_valid():
 			form.save()
