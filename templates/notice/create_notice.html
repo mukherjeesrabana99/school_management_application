@@ -4,10 +4,21 @@
 <link rel="stylesheet" href="{% static 'style.css' %}">
 <div id="layoutSidenav_content">
                 <main>
-                    <div class="container-fluid">
-						<form method='POST'>
-							{% csrf_token %}
-							{{form.as_p}}
-							<button type="submit">Submit</button>
-						</form>
+                    <div class="container-fluid" style="padding:3%;">
+                    	<div class="card">
+                              <div class="card-header bg-info">Add Notice</div>
+                    		<div class="card-body">
+                    			<div class="form-group">
+                    				<form method='POST'>
+									{% csrf_token %}
+									{{form.as_p}}
+									<button class="btn btn-info" type="submit">Submit</button>
+								</form>
+                    			</div>
+                    			<!-- end of form group -->
+                    		</div>
+                    		<!-- end of card-body -->
+                    	</div>
+                    	<!-- end of card -->
+						
 {% endblock body %}

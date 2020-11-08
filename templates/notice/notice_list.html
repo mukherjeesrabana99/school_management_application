@@ -2,14 +2,22 @@
 {% block body %}
 <div id="layoutSidenav_content">
                 <main>
-                    <div class="container-fluid">
-                    	<h4>Notices</h4>
-                    	{% for notice in notices %}
-                    	<h5>{{notice.heading}}</h5>
-                    	<p>{{notice.body}}</p>
-                    	Posted on {{notice.date}}
-                    	<a href="/notice/edit_notice/{{notice.id}}/">Edit</a>
-                    	<a href="/notice/delete_notice/{{notice.id}}/">Delete</a>
-
+                    <div class="container-fluid" style="padding:3%;">
+                         <div class="card">
+                              <div class="card-header bg-info"><i class="fas fa-table mr-1"></i>Notices</div>
+                              <div class="card-body">
+                                  {% for notice in notices %}
+                                   <h5>{{notice.heading}}</h5>
+                                   <p>{{notice.body}}</p>
+                                   Posted on {{notice.date}}
+                                   <a class="btn btn-sm btn-warning mr-1" href="/notice/edit_notice/{{notice.id}}/">Edit</a>
+                                   <a class="btn btn-sm btn-danger ml-1" href="/notice/delete_notice/{{notice.id}}/">Delete</a>
+                                   
+                              </div>
+                              <!-- end of card body -->
+                         </div>
+                         <!-- end of card -->
                     	{% endfor %}
+                    	
+                    	
 {% endblock body %}
