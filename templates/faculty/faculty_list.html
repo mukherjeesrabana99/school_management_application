@@ -10,33 +10,49 @@
 
 <div id="layoutSidenav_content">
                 <main>
-                    <div class="container-fluid">
-                        
-                    	<h4>Faculties</h4>
-                    	<table>
-                    		<tr>
-                    			<th>Photo</th>
-                    			<th>Name></th>
-                    			<th>Actions</th>
-                    		</tr>
-                    		{% for faculty in faculties %}
-                    		<tr>
-                    			<td>
-                                    {% ifequal faculty.gender "male" %}
-                                    <img src="{% static 'boy.png' %}">
-                                    {% else %}
-                                    <img src="{% static 'girl.png' %}">
-                                    {% endifequal %}
-                                </td>
+                    <div class="container-fluid" style="padding:3%;">
+                        <div class="card">
+                            <div class="card-header bg-info"><i class="fas fa-table mr-1"></i>Faculties</div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Photo</th>
+                                                <th>Name></th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for faculty in faculties %}
+                                            <tr>
+                                                <td>
+                                                    {% ifequal faculty.gender "male" %}
+                                                    <img src="{% static 'boy.png' %}">
+                                                    {% else %}
+                                                    <img src="{% static 'girl.png' %}">
+                                                    {% endifequal %}
+                                                </td>
+                                                    
+                                                <td>{{faculty.name}}</td>
+                                                <td>
+                                                    <a class="btn btn-sm btn-info mr-1 ml-1" href="/faculty/faculty_detail/{{faculty.id}}/">View Profile</a>
+                                                    <a class="btn btn-sm btn-warning mr-1 ml-1" href="/faculty/edit_faculty/{{faculty.id}}/">Edit</a>
+                                                    <a class="btn btn-sm btn-danger mr-1 ml-1" href="/faculty/delete_faculty/{{faculty.id}}/">Delete</a>
+                                                </td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                            
                                     
-                    			<td>{{faculty.name}}</td>
-                    			<td>
-                    				<a href="/faculty/faculty_detail/{{faculty.id}}/">View Profile</a>
-                    				<a href="/faculty/edit_faculty/{{faculty.id}}/">Edit</a>
-                    				<a href="/faculty/delete_faculty/{{faculty.id}}/">Delete</a>
-                    			</td>
-                    		</tr>
-                    		{% endfor %}
-                    	</table>
-                        <a href="/faculty/create_faculty/">Back</a>
+                                    </table>
+                                    
+                                </div>
+                                <!-- end of table responsive div -->
+                            </div>
+                            <!-- end of card-body -->
+                        </div>
+                        <!-- end of card -->
+                        
+                    	
 {% endblock body %}
