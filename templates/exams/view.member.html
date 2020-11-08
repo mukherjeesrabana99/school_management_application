@@ -16,32 +16,38 @@
 </style>
 <div id="layoutSidenav_content">
                 <main>
-                    <div class="container-fluid">
-                    	<div class="container">
+                    <div class="container-fluid" style="padding:3%;">
+                    	<div class="card">
+                          <div class="card-body">
                               {% ifequal member.student.gender "male" %}
-                         <img  class="detail-img" src="{% static 'boy.png' %}">
-                         {% else %}
-                         <img class="detail-img" src="{% static 'girl.png' %}">
-                         {% endifequal %}
-                         <ul>
-                              <h5>Name:</h5>
-                              {{member.student.name}}
-                         </ul>
-                         <ul>
-                              <h5>Class:</h5>
-                              {{member.student.class_name}}
-                         </ul>
-                          <ul>
-                              <h5>Address:</h5>
-                              {{member.student.city}}, {{member.student.country}} 
-                         </ul>
-                         <ul>
-                              <h5>Present Status:</h5>
-                              {% if member.attendance == 'Present' %}
-                              Yes
+                              <img  class="detail-img" src="{% static 'boy.png' %}">
                               {% else %}
-                              No
-                              {% endif %}
-                         </ul>
+                              <img class="detail-img" src="{% static 'girl.png' %}">
+                              {% endifequal %}
+                              <ul>
+                                   <h5>Name:</h5>
+                                   {{member.student.name}}
+                              </ul>
+                              <ul>
+                                   <h5>Class:</h5>
+                                   {{member.student.class_name}}
+                              </ul>
+                               <ul>
+                                   <h5>Address:</h5>
+                                   {{member.student.city}}, {{member.student.country}} 
+                              </ul>
+                              <ul>
+                                   <h5>Present Status:</h5>
+                                   {% if member.attendance == 'Present' %}
+                                   Yes
+                                   {% else %}
+                                   No
+                                   {% endif %}
+                              </ul> 
+                          </div>
+                          <!-- end of card body -->    
+                         </div>
+                         <!-- end of card -->
+                        
 
 {% endblock body %}

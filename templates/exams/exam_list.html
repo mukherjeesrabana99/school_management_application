@@ -9,40 +9,57 @@
 
 <div id="layoutSidenav_content">
                 <main>
-                    <div class="container-fluid">
-                        
-                    	<h4>Exams</h4>
-                    	<table>
-                    		<tr>
-                    			<th>Exam</th>
-                    			<th>Session</th>
-                    			<th>Type</th>
-                    			<th>Starts On</th>
-                    			<th>Ends On</th> 
-                    			<th>Status</th>  
-                    			<th>Actions</th>                 		
-                    		</tr>
-                    		{% for exam in exams %}
-                    		<tr>
-                    			<td>{{exam.name}}</td>
-                    			<td>{{exam.session.name}}</td>
-                    			<td>{{exam.exam_type.name}}</td>
-                    			<td>{{exam.start_date}}</td>
-                    			<td>{{exam.end_date}}</td>
-                    			<td>
-                    				{% if exam.status == "Scheduled" %}
-                    				<h6>Scheduled</h6>
-                    				{% elif exam.status == "Completed" %}
-                    				<h6>Completed</h6>
-                    				{% else %}
-                    				<h6>Ongoing</h6>
-                    				{% endif %}
-                    			</td>
-                    			<td>
-                    				<a href="/online_tests/edit_exam/{{exam.id}}/">Edit</a>
-                    				<a href="/online_tests/delete_exam/{{exam.id}}/">Delete</a>
-                    			</td>
-                    		</tr>
-                    		{% endfor %}
-                    	</table>
+                    <div class="container-fluid" style="padding:3%;">
+                         <!-- Table Card -->
+                        <div class="card">
+                          <div class="card-header bg-info"><i class="fas fa-table mr-1"></i><strong>Exams</strong></h5></div>
+                          <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered datatable dataTable no-footer" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info" style="border-collapse: collapse !important">
+                                    <thead>
+                                            <tr>
+                                                  <th>Exam</th>
+                                                  <th>Session</th>
+                                                  <th>Type</th>
+                                                  <th>Starts On</th>
+                                                  <th>Ends On</th> 
+                                                  <th>Status</th>  
+                                                  <th>Actions</th>          
+                                            </tr>
+                                    </thead>
+                                    <!-- looping over each of the Exams to get each of them rendered -->
+                                    {% for exam in exams %}
+                                    <tbody>
+                                        <tr>
+                                    
+                                             <td>{{exam.name}}</td>
+                                             <td>{{exam.session.name}}</td>
+                                             <td>{{exam.exam_type.name}}</td>
+                                             <td>{{exam.start_date}}</td>
+                                             <td>{{exam.end_date}}</td>
+                                             <td>
+                                                  {% if exam.status == "Scheduled" %}
+                                                  <h6>Scheduled</h6>
+                                                  {% elif exam.status == "Completed" %}
+                                                  <h6>Completed</h6>
+                                                  {% else %}
+                                                  <h6>Ongoing</h6>
+                                                  {% endif %}
+                                             </td>
+                                             <td style="display:flex;">
+                                                  <a class="btn btn-sm btn-warning mr-1 ml-1" href="/online_tests/edit_exam/{{exam.id}}/">Edit</a>
+                                                  <a class="btn btn-sm btn-danger mr-1 ml-1" href="/online_tests/delete_exam/{{exam.id}}/">Delete</a>
+                                             </td>
+                                        </tr>
+                                    </tbody>
+                                    {% endfor %}
+                                    <!-- end of looping -->
+                                </table>
+                            </div>
+                            <!-- end of table-responsive div -->
+                            </div>
+                            <!-- end of card-body div -->
+                        </div>
+                        <!-- end of card -->
+                    
 {% endblock body %}

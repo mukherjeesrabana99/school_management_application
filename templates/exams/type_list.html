@@ -9,25 +9,42 @@
 
 <div id="layoutSidenav_content">
                 <main>
-                    <div class="container-fluid">
-                        
-                    	<h4> Exam Types</h4>
-                    	<table>
-                    		<tr>
-                    			<td>Exam Type</td>
-                    			<td>Created at</td>
-                    			<td>Actions</td>
-                    		</tr>
-                    		{% for type in types %}
-                    		<tr>
-                    			<td>{{type.name}}</td>
-                    			<td>{{type.date}}</td>
-                    			<td>
-                    				<a href="/online_tests/edit_type/{{type.id}}/">Edit</a>
-                    				<a href="/online_tests/delete_type/{{type.id}}/">Delete</a>
-                    			</td>
-                    		</tr>
-                    		{% endfor %}
-                    	</table>
+                    <div class="container-fluid" style="padding:3%;">
+                         <!-- Table Card -->
+                        <div class="card">
+                          <div class="card-header bg-info"><i class="fas fa-table mr-1"></i>Exam Types</h5></div>
+                          <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                            <tr>
+                                                  <th>Exam Type</th>
+                                                  <th>Createh at</td>
+                                                  <th>Actions</th>
+                                            </tr>
+                                    </thead>
+                                    <!-- looping over each of the Exam Types to get each of them rendered -->
+                                    {% for type in types %}
+                                    <tbody>
+                                        <tr>
+                                    
+                                             <td>{{type.name}}</td>
+                                             <td>{{type.date}}</td>
+                                             <td>
+                                                  <a class="btn btn-sm btn-warning" href="/online_tests/edit_type/{{type.id}}/">Edit</a>
+                                                  <a class="btn btn-sm btn-danger" href="/online_tests/delete_type/{{type.id}}/">Delete</a>
+                                             </td>
+                                        </tr>
+                                    </tbody>
+                                    {% endfor %}
+                                    <!-- end of looping -->
+                                </table>
+                            </div>
+                            <!-- end of table-responsive div -->
+                            </div>
+                            <!-- end of card-body div -->
+                        </div>
+                        <!-- end of card -->
+                    
 
 {% endblock body %}

@@ -9,29 +9,47 @@
 
 <div id="layoutSidenav_content">
                 <main>
-                    <div class="container-fluid">
-                        
-                    	<h4>Agenda</h4>
-                    	<table>
-                    		<tr>
-                    			<td>Exam</td>
-                    			<td>Starts At</td>
-                    			<th>Ends At</th>
-                    			<th>Created At</th>
-                    			<th>Actions</th>
-                    		</tr>
-                    		{% for agenda in agenda %}
-                    		<tr>
-                    			<td>{{agenda.exam.name}}</td>
-                    			<td>{{agenda.start_time}}</td>
-                    			<td>{{agenda.end_time}}</td>
-                    			<td>{{agenda.date}}</td>
-                    			<td>
-                    				<a href="/online_tests/view_agenda/{{agenda.id}}/">View Agenda</a>
-                    				<a href="/online_tests/edit_agenda/{{agenda.id}}/">Edit Agenda</a>
-                    				<a href="/online_tests/delete_agenda/{{agenda.id}}/">Delete Agenda</a>
-                    			</td>
-                    		</tr>
-                    		{% endfor %}
-                    	</table>
+                    <div class="container-fluid" style="padding:3%;">
+
+                         <!-- Table Card -->
+                        <div class="card">
+                          <div class="card-header bg-info"><i class="fas fa-table mr-1"></i>Agenda</h5></div>
+                          <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                            <tr>
+                                                  <th>Exam</th>
+                                                  <th>Starts At</th>
+                                                  <th>Ends At</th>
+                                                  <th>Created At</th>
+                                                  <th>Actions</th>
+                                            </tr>
+                                    </thead>
+                                    <!-- looping over each of the Agenda to get each of them rendered -->
+                                    {% for agenda in agenda %}
+                                    <tbody>
+                                        <tr>
+                                    
+                                            <td>{{agenda.exam.name}}</td>
+                                             <td>{{agenda.start_time}}</td>
+                                             <td>{{agenda.end_time}}</td>
+                                             <td>{{agenda.date}}</td>
+                                             <td>
+                                                  <a class="btn btn-sm btn-info" href="/online_tests/view_agenda/{{agenda.id}}/">View Agenda</a>
+                                                  <a class="btn btn-sm btn-warning" href="/online_tests/edit_agenda/{{agenda.id}}/">Edit Agenda</a>
+                                                  <a class="btn btn-sm btn-danger" href="/online_tests/delete_agenda/{{agenda.id}}/">Delete Agenda</a>
+                                             </td>
+                                        </tr>
+                                    </tbody>
+                                    {% endfor %}
+                                    <!-- end of looping -->
+                                </table>
+                            </div>
+                            <!-- end of table-responsive div -->
+                            </div>
+                            <!-- end of card-body div -->
+                        </div>
+                        <!-- end of card -->
+                    
 {% endblock body %}
