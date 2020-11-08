@@ -4,33 +4,51 @@
 <link rel="stylesheet" href="{% static 'style.css' %}">
             <div id="layoutSidenav_content">
                 <main>
-                    <div class="container-fluid">
-                    	<table>
-                    		<tr>
-                                   <td>Photo</td>
-                    			<td>Students</td>
-                    		<td>Payment Status</td>
-                    		</tr>
-                    		{% for student in students %}
-                    		<tr>
-                                   <td>
-                                    {% ifequal student.gender "male" %}
-                                    <img src="{% static 'boy.png' %}">
-                                    {% else %}
-                                    <img src="{% static 'girl.png' %}">
-                                    {% endifequal %}
+                    <div class="container-fluid" style="padding:3%;">
+                        <!-- Table Card -->
+                        <div class="card">
+                          <div class="card-header bg-info"><i class="fas fa-table mr-1"></i>Sections</h5></div>
+                          <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                            <tr>
+                                                <td>Photo</td>
+                                                <td>Students</td>
+                                                <td>Payment Status</td>
+                                            </tr>
+                                    </thead>
+                                    <!-- looping over each of the sections to get each of them rendered -->
+                                    {% for student in students %}
+                                    <tbody>
+                                        <tr>
                                     
-                                </td>
-                    			<td>{{student.name}}</td>
-                    			{% if student.paid %}
-                    			<td>Paid</td>
-                    			{% else %}
-                    			<td>due</td>
-                    			{% endif %}
-                    		</tr>
-                    		{% endfor %}
-                    		
-                    	</table>
+                                            <td>
+                                            {% ifequal student.gender "male" %}
+                                            <img src="{% static 'boy.png' %}">
+                                            {% else %}
+                                            <img src="{% static 'girl.png' %}">
+                                            {% endifequal %}
+                                            
+                                            </td>
+                                            <td>{{student.name}}</td>
+                                            {% if student.paid %}
+                                            <td>Paid</td>
+                                            {% else %}
+                                            <td>due</td>
+                                            {% endif %}
+                                        </tr>
+                                    </tbody>
+                                    {% endfor %}
+                                    <!-- end of looping -->
+                                </table>
+                            </div>
+                            <!-- end of table-responsive div -->
+                            </div>
+                            <!-- end of card-body div -->
+                        </div>
+                        <!-- end of card -->
+                    
 {% endblock body %}
 
 

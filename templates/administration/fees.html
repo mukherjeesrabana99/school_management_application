@@ -1,49 +1,109 @@
 {% extends 'base.html' %}
 {% block body %}
 {% load static %}
-<style>
-    table{
-        margin:40px
-    }
-</style>
+
 <link rel="stylesheet" href="{% static 'style.css' %}">
             <div id="layoutSidenav_content">
                 <main>
-                    <div class="container-fluid">
-                        <h1>Fees</h1>
-                        <form method='POST'>
-                            {% csrf_token %}
-                            {{form.as_p}}
-                            <button type="submit">Submit</button>
-                        </form>
-                        <h5>Fees Structure</h5>
-                        <table>
-                            <tr>
-                                <th>Class</th>
-                                <th>Ffes Type</th>
-                                <th>Amount</th>
-                            </tr>
-                            {% for fees in fees %}
-                            <tr>
-                                <td>{{fees.class_name}}</td>
-                                <td>{{fees.fee_type}}</td>
-                                <td>{{fees.amount}}</td>
-                            </tr>
-                            {% endfor %}
-                        </table>
-                        <h5>View Fee Payment Status ClassWise</h5>
-                    	<table>
-                    		<tr>
-                    			<th>Classes</th>
-                    			<th></th>
-                    		</tr>
-                    		{% for class in classes %}
-                    		<tr>
-                    			<td>{{class.name}}</td>
-                    			<td><a href="/administration/fee_detail/{{class.id}}/">View fees Payment Status</a>
-                    			</td>
-                    		</tr>
-                    		{% endfor %}
-                    	</table>
+                    <div class="container-fluid" style="padding:2%;">
+                        <div class="row">
+                            <div class="col-xl-6">
+                                 <!-- Form Card -->
+                                <div class="card">
+                                  <div class="card-header bg-info"><h5>Fees Form</h5></div>
+                                  <div class="card-body">
+                                   <div class="form-group">
+                                        <form method="POST">
+                                          {% csrf_token %}
+                                        {{form.as_p}} 
+                                        <button type="submit" class="btn btn-info">Add</button> 
+                                        </form>
+                                        <!-- end of form -->
+                                      </div>
+                                      <!-- end of form-group div -->
+                                    </div>
+                                    <!-- end of card-body -->
+                                </div>
+                                <!-- end of card -->
+                            </div>
+                            <!-- end of one column -->
+                            <div class="col-xl-6">
+                                <!-- Table Card -->
+                                <div class="card">
+                                  <div class="card-header bg-info"><i class="fas fa-table mr-1"></i>Fees Structure</h5></div>
+                                  <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                                    <tr>
+                                                        <th>Class</th>
+                                                        <th>Fees Type</th>
+                                                        <th>Amount</th>
+                                                    </tr>
+                                            </thead>
+                                            <!-- looping over each of the Fees Structure to get each of them rendered -->
+                                            {% for fees in fees %}
+                                            <tbody>
+                                                <tr>
+                                            
+                                                    <td>{{fees.class_name}}</td>
+                                                    <td>{{fees.fee_type}}</td>
+                                                    <td>{{fees.amount}}</td>
+                                                </tr>
+                                            </tbody>
+                                            {% endfor %}
+                                            <!-- end of looping -->
+                                        </table>
+                                    </div>
+                                    <!-- end of table-responsive div -->
+                                    </div>
+                                    <!-- end of card-body div -->
+                                </div>
+                                <!-- end of card -->
+                                        
+                                    </div>
+                            <!-- end of column -->
+                            <div class="col-xl-6">
+                                <!-- Table Card -->
+                                <div class="card">
+                                  <div class="card-header bg-info"><i class="fas fa-table mr-1"></i><strong>View Fee Payment Status ClassWise</strong></div>
+                                  <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                                    <tr>
+                                                        <th>Classes</th>
+                                                        <th></th>
+                                                    </tr>
+                                            </thead>
+                                            <!-- looping over each of the classes to get each of them rendered -->
+                                            {% for class in classes %}
+                                            <tbody>
+                                                <tr>
+                                            
+                                                    <td>{{class.name}}</td>
+                                                    <td><a href="/administration/fee_detail/{{class.id}}/">View fees Payment Status</a>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                            {% endfor %}
+                                            <!-- end of looping -->
+                                        </table>
+                                    </div>
+                                    <!-- end of table-responsive div -->
+                                    </div>
+                                    <!-- end of card-body div -->
+                                </div>
+                                <!-- end of card -->
+                                
+                            </div>
+                            <!-- end of column -->
+                        </div>
+                        <!-- end of row -->
+                       
+                        
+
+                        
+                    
 
 {% endblock body %}

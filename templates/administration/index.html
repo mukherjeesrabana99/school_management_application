@@ -49,6 +49,15 @@
                                 </div>
                             </div>
                             <div class="col-xl-3 col-md-6">
+                                <div class="card bg-primary text-white mb-4">
+                                    <div class="card-body">Attendance</div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <a class="small text-white stretched-link" href="/administration/attendance/">View Details</a>
+                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
                                 <div class="card bg-danger text-white mb-4">
                                     <div class="card-body">Online Tests
                                         <h6>
@@ -116,10 +125,20 @@
                                 </div>
                             </div>
                         </div>
-                        {% for notice in notices %}
-                        <h5>{{notice.heading}}</h5>
-                        <p>{{notice.body}}</p>
-                        <p>posted on {{notice.date}}</p>
+                        <div class="card">
+                              <div class="card-header bg-info"><i class="fas fa-table mr-1"></i>Notices</div>
+                              <div class="card-body">
+                                  {% for notice in notices %}
+                                   <h5>{{notice.heading}}</h5>
+                                   <p>{{notice.body}}</p>
+                                   Posted on {{notice.date}}
+                                   <a class="btn btn-sm btn-warning mr-1" href="/notice/edit_notice/{{notice.id}}/">Edit</a>
+                                   <a class="btn btn-sm btn-danger ml-1" href="/notice/delete_notice/{{notice.id}}/">Delete</a>
+                                   
+                              </div>
+                              <!-- end of card body -->
+                         </div>
+                         <!-- end of card -->
                         {% endfor %}
                         <!-- <div class="row">
                             <div class="col-xl-6">
@@ -630,7 +649,7 @@
                                     </table>
                                 </div>
                             </div> -->
-                        <!-- </div>
+                       <!--  </div>
                     </div>
                 </main> -->
 {% endblock body %}
