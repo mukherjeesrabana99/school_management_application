@@ -10,38 +10,66 @@
         
             <div id="layoutSidenav_content">
                 <main>
-                    <div class="container-fluid">
-						<h1>Session Registration</h1>
-						<form method="POST">
-							{% csrf_token %}
-							{{form.as_p}}
-							<button type="submit">Add Session</button>
-						</form>
-						<h3>Session List</h3>
-						<table>
-							<tr>
-								<th>Session Start</th>
-								<th>Session End</th>
-								<th>Session</th>
-								<th>Date</th>
-								<th>Actions</th>
-							</tr>
-							{% for session in sessions %}
-							<tr>
-								<td>{{session.session_start}}</td>
-								<td>{{session.session_end}}</td>
-								<td>{{session.name}}
-								{% if session.current %}
-								<em>[Current]</em>
-								{% endif %}
-								</td>
-								<td>{{session.date}}</td>
-								<td>
-									<a href="/academics/edit_session/{{session.id}}/">Edit</a>
-									<a href="/academics/delete_session/{{session.id}}/">Delete</a>
-								</td>
-							</tr>
-							{% endfor %}
-						</table>
-					</div>
+                    <div class="container-fluid" style="padding:3%;">
+						<!-- Form Card -->
+                        <div class="card">
+                          <div class="card-header bg-info">Register Session</h5></div>
+                          <div class="card-body">
+                           <div class="form-group">
+                                <form method="POST">
+                                  {% csrf_token %}
+                                {{form.as_p}} 
+                                <button type="submit" class="btn btn-info">Add Session</button> 
+                                </form>
+                                <!-- end of form -->
+                              </div>
+                              <!-- end of form-group div -->
+                            </div>
+                            <!-- end of card-body -->
+                        </div>
+                        <!-- end of card -->
+                         <!-- Table Card -->
+                        <div class="card">
+                          <div class="card-header bg-info"><i class="fas fa-table mr-1"></i>Sessions</h5></div>
+                          <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                            <tr>
+                                                <th>Session Start</th>
+												<th>Session End</th>
+												<th>Session</th>
+												<th>Date</th>
+												<th>Actions</th>
+                                            </tr>
+                                    </thead>
+                                    <!-- looping over each of the Sessions to get each of them rendered -->
+                                    {% for session in sessions %}
+                                    <tbody>
+                                        <tr>
+                                    
+                                            <td>{{session.session_start}}</td>
+											<td>{{session.session_end}}</td>
+											<td>{{session.name}}
+											{% if session.current %}
+											<em>[Current]</em>
+											{% endif %}
+											</td>
+											<td>{{session.date}}</td>
+											<td>
+												<a class="btn btn-sm btn-warning" href="/academics/edit_session/{{session.id}}/">Edit</a>
+												<a class="btn btn-sm btn-danger" href="/academics/delete_session/{{session.id}}/">Delete</a>
+											</td>
+                                        </tr>
+                                    </tbody>
+                                    {% endfor %}
+                                    <!-- end of looping -->
+                                </table>
+                            </div>
+                            <!-- end of table-responsive div -->
+                            </div>
+                            <!-- end of card-body div -->
+                        </div>
+                        <!-- end of card -->
+                    
 {% endblock body %}

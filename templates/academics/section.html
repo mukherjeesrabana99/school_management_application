@@ -10,30 +10,60 @@
         
             <div id="layoutSidenav_content">
                 <main>
-                    <div class="container-fluid">
-							<h1>Section Registration</h1>
-							<form method="POST">
-								{% csrf_token %}
-								{{form.as_p}}
-								<button type="submit">Add Section</button>
-							</form>
-							<h3>Section List</h3>
-							<table>
-								<tr>
-									<th>Section></th>
-									<th>Date</th>
-									<th>Actions</th>
-								</tr>
-								{% for section in sections %}
-								<tr>
-									<td>{{section.name}}</td>
-									<td>{{section.date}}</td>
-									<td>
-										<a href="/academics/edit_section/{{section.id}}/">Edit</a>
-										<a href="/academics/delete_section/{{section.id}}/">Delete</a>
-									</td>
-								</tr>
-								{% endfor %}
-							</table>
-					    </div>
+                    <div class="container-fluid" style="padding:3%;">
+							<!-- Form Card -->
+                        <div class="card">
+                          <div class="card-header bg-info">Register Section</h5></div>
+                          <div class="card-body">
+                           <div class="form-group">
+                                <form method="POST">
+                                  {% csrf_token %}
+                                {{form.as_p}} 
+                                <button type="submit" class="btn btn-info">Add Section</button> 
+                                </form>
+                                <!-- end of form -->
+                              </div>
+                              <!-- end of form-group div -->
+                            </div>
+                            <!-- end of card-body -->
+                        </div>
+                        <!-- end of card -->
+
+                        <!-- Table Card -->
+                        <div class="card">
+                          <div class="card-header bg-info"><i class="fas fa-table mr-1"></i>Sections</h5></div>
+                          <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                            <tr>
+                                                <th>Section></th>
+												<th>Date</th>
+												<th>Actions</th>
+                                            </tr>
+                                    </thead>
+                                    <!-- looping over each of the sections to get each of them rendered -->
+                                    {% for section in sections %}
+                                    <tbody>
+                                        <tr>
+                                    
+                                            <td>{{section.name}}</td>
+											<td>{{section.date}}</td>
+											<td>
+												<a class="btn btn-sm btn-warning" href="/academics/edit_section/{{section.id}}/">Edit</a>
+												<a class="btn btn-sm btn-danger" href="/academics/delete_section/{{section.id}}/">Delete</a>
+											</td>
+                                        </tr>
+                                    </tbody>
+                                    {% endfor %}
+                                    <!-- end of looping -->
+                                </table>
+                            </div>
+                            <!-- end of table-responsive div -->
+                            </div>
+                            <!-- end of card-body div -->
+                        </div>
+                        <!-- end of card -->
+                    
+
 {% endblock body %}

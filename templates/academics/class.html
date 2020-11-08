@@ -5,22 +5,39 @@
 
     
 
-<link href="{% static 'style.css' %}", rel="stylesheet">
+<link href="{% static 'style.css' %}" rel="stylesheet">
 
 
         
             <div id="layoutSidenav_content">
                 <main>
-                    <div class="container-fluid">
-                    	<h1>Class Registratioin</h1>
-						<form method="POST">
-							{% csrf_token %}
-							{{form.as_p}}
-							<button type="submit">Add Class</button>
-						</form>
-                                Classes
-                                <table>
-                                        <thead>
+                    <div class="container-fluid" style="padding:3%;">
+                        <!-- Form Card -->
+                        <div class="card">
+                          <div class="card-header bg-info"><strong>Register Class</strong></h5></div>
+                          <div class="card-body">
+                           <div class="form-group">
+                                <form method="POST">
+                                  {% csrf_token %}
+                                {{form.as_p}} 
+                                <button type="submit" class="btn btn-info">Add Class</button> 
+                                </form>
+                                <!-- end of form -->
+                              </div>
+                              <!-- end of form-group div -->
+                            </div>
+                            <!-- end of card-body -->
+                        </div>
+                        <!-- end of card -->
+
+
+                        <!-- Table Card -->
+                        <div class="card">
+                          <div class="card-header bg-info"><i class="fas fa-table mr-1"></i>Classes</h5></div>
+                          <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
                                             <tr>
                                                 <th>Name</th>
                                                 
@@ -28,20 +45,30 @@
                                                 <th>Students</th>
                                                 <th>Actions</th>
                                             </tr>
-                                        </thead>
-                                        {% for class in classes %}
-                                        <tbody>
-                                            <tr>
-                                                <td>{{class.name}}</td>
-                                                <td>{{class.students.class_name}}</td>
-                                                <td>{{class.date}}</td>
-                                                <td>
-                                                	<a href="/academics/edit_class/{{class.id}}/">Edit</a>
-									                <a href="/academics/delete_class/{{class.id}}/">Delete</a>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-							{% endfor %}
-						</table>
-					</div> 
+                                    </thead>
+                                    <!-- looping over each of the classes to get each of them rendered -->
+                                    {% for class in classes %}
+                                    <tbody>
+                                        <tr>
+                                    
+                                            <td>{{class.name}}</td>
+                                            <td>{{class.students.class_name}}</td>
+                                            <td>{{class.date}}</td>
+                                            <td>
+                                                <a class="btn btn-warning btn-sm" href="/academics/edit_class/{{class.id}}/">Edit</a>
+                                                <a class="btn btn-danger btn-sm" href="/academics/delete_class/{{class.id}}/">Delete</a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                    {% endfor %}
+                                    <!-- end of looping -->
+                                </table>
+                            </div>
+                            <!-- end of table-responsive div -->
+                            </div>
+                            <!-- end of card-body div -->
+                        </div>
+                        <!-- end of card -->
+                    
+
 {% endblock body %}

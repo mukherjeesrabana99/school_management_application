@@ -10,32 +10,61 @@
         
             <div id="layoutSidenav_content">
                 <main>
-                    <div class="container-fluid">
-							<h1>Shift Registration</h1>
-							<form method="POST">
-								{% csrf_token %}
-								{{form.as_p}}
-								<button type="submit">Add Shift</button>
-							</form>
-							<h3>Shift List</h3>
-							<table>
-								<tr>
-									<th>Shifts</th>
-									<th>Start</th>
-									<th>End</th>
-									<th>Actions</th>
-								</tr>
-								{% for shift in shifts %}
-								<tr>
-									<td>{{shift.name}}</td>
-									<td>{{shift.start}}</td>
-									<td>{{shift.end}}</td>
-									<td>
-										<a href="/academics/edit_shift/{{shift.id}}/">Edit</a>
-										<a href="/academics/delete_shift/{{shift.id}}/">Delete</a>
-									</td>
-								</tr>
-								{% endfor %}
-							</table>
-					    </div>
+                    <div class="container-fluid" style="padding:3%;">
+							<!-- Form Card -->
+                        <div class="card">
+                          <div class="card-header bg-info">Register Shift</h5></div>
+                          <div class="card-body">
+                           <div class="form-group">
+                                <form method="POST">
+                                  {% csrf_token %}
+                                {{form.as_p}} 
+                                <button type="submit" class="btn btn-info">Add Shift</button> 
+                                </form>
+                                <!-- end of form -->
+                              </div>
+                              <!-- end of form-group div -->
+                            </div>
+                            <!-- end of card-body -->
+                        </div>
+                        <!-- end of card -->
+
+                        <!-- Table Card -->
+                        <div class="card">
+                          <div class="card-header bg-info"><i class="fas fa-table mr-1"></i>Shifts</h5></div>
+                          <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                            <tr>
+                                                <th>Shifts</th>
+												<th>Start</th>
+												<th>End</th>
+												<th>Actions</th>
+                                            </tr>
+                                    </thead>
+                                    <!-- looping over each of the Shifts to get each of them rendered -->
+                                    {% for shift in shifts %}
+                                    <tbody>
+                                        <tr>
+                                    
+                                            <td>{{shift.name}}</td>
+											<td>{{shift.start_time}}</td>
+											<td>{{shift.end_time}}</td>
+											<td>
+												<a class="btn btn-sm btn-warning" href="/academics/edit_shift/{{shift.id}}/">Edit</a>
+												<a class="btn btn-sm btn-danger" href="/academics/delete_shift/{{shift.id}}/">Delete</a>
+											</td>
+                                        </tr>
+                                    </tbody>
+                                    {% endfor %}
+                                    <!-- end of looping -->
+                                </table>
+                            </div>
+                            <!-- end of table-responsive div -->
+                            </div>
+                            <!-- end of card-body div -->
+                        </div>
+                        <!-- end of card -->
+                    
 {% endblock body %}
