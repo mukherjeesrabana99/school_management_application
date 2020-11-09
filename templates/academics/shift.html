@@ -38,9 +38,9 @@
                                     <thead>
                                             <tr>
                                                 <th>Shifts</th>
-												<th>Start</th>
-												<th>End</th>
-												<th>Actions</th>
+						<th>Start</th>
+						<th>End</th>
+						<th>Actions</th>
                                             </tr>
                                     </thead>
                                     <!-- looping over each of the Shifts to get each of them rendered -->
@@ -48,13 +48,13 @@
                                     <tbody>
                                         <tr>
                                     
-                                            <td>{{shift.name}}</td>
-											<td>{{shift.start_time}}</td>
-											<td>{{shift.end_time}}</td>
-											<td>
-												<a class="btn btn-sm btn-warning" href="/academics/edit_shift/{{shift.id}}/">Edit</a>
-												<a class="btn btn-sm btn-danger" href="/academics/delete_shift/{{shift.id}}/">Delete</a>
-											</td>
+                                            	<td>{{shift.name}}</td>
+						<td>{{shift.start_time}}</td>
+						<td>{{shift.end_time}}</td>
+						<td>
+							<a class="btn btn-sm btn-warning" href="/academics/edit_shift/{{shift.id}}/">Edit</a>
+							<a class="btn btn-sm btn-danger" href="/academics/delete_shift/{{shift.id}}/">Delete</a>
+						</td>
                                         </tr>
                                     </tbody>
                                     {% endfor %}
