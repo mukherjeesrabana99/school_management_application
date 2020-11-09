@@ -12,10 +12,10 @@
                 <main>
                     <div class="container-fluid" style="padding:3%;">
 							<!-- Form Card -->
-                        <div class="card">
-                          <div class="card-header bg-info">Register Country</h5></div>
-                          <div class="card-body">
-                           <div class="form-group">
+                        <div class="card"><!-- card starts -->
+                          <div class="card-header text-white bg-info"><b>Register Country</b></div>
+                          <div class="card-body"><!-- card body starts -->
+                           <div class="form-group"><!-- form group div starts -->
                                 <form method="POST">
                                   {% csrf_token %}
                                 {{form.as_p}} 
@@ -30,24 +30,22 @@
                         <!-- end of card -->
 
                         <!-- Table Card -->
-                        <div class="card">
-                          <div class="card-header bg-info"><i class="fas fa-table mr-1"></i>Countries</h5></div>
-                          <div class="card-body">
-                            <div class="table-responsive">
+                        <div class="card"><!-- card starts -->
+                          <div class="card-header text-white bg-info"><i class="fas fa-table mr-1"></i><b>Countries</b></div>
+                          <div class="card-body"><!-- card body starts -->
+                            <div class="table-responsive"><!-- table responsive div starts -->
                                 <table class="table">
                                     <thead>
-                                            <tr>
-                                                <th>Countries</th>
-									
-												<th>Date</th>
-												<th>Actions</th>
-                                            </tr>
+                                        <tr>
+                                            <th>Countries</th>
+											<th>Date</th>
+											<th>Actions</th>
+                                        </tr>
                                     </thead>
                                     <!-- looping over each of the countries to get each of them rendered -->
                                     {% for country in countries %}
                                     <tbody>
                                         <tr>
-                                    
                                             <td>{{country.name}}</td>
 											<td>{{country.date}}</td>
 											<td>

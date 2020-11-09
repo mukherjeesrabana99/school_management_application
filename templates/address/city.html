@@ -12,10 +12,10 @@
                 <main>
                     <div class="container-fluid" style="padding:3%;">
 							 <!-- Form Card -->
-                        <div class="card">
+                        <div class="card"><!-- card starts -->
                           <div class="card-header bg-info">Register City</h5></div>
-                          <div class="card-body">
-                           <div class="form-group">
+                          <div class="card-body"><!-- card body starts -->
+                           <div class="form-group"><!-- form-group div starts -->
                                 <form method="POST">
                                   {% csrf_token %}
                                 {{form.as_p}} 
@@ -30,29 +30,28 @@
                         <!-- end of card -->
 
                          <!-- Table Card -->
-                        <div class="card">
-                          <div class="card-header bg-info"><i class="fas fa-table mr-1"></i>Cities</h5></div>
-                          <div class="card-body">
-                            <div class="table-responsive">
+                        <div class="card"><!-- card starts -->
+                          <div class="card-header text-white bg-info"><i class="fas fa-table mr-1"></i><b>Cities</b></div>
+                          <div class="card-body"><!-- card body starts -->
+                            <div class="table-responsive"><!-- table responsive div starts -->
                                 <table class="table">
                                     <thead>
-                                            <tr>
-                                                <th>Cities</th>
-												<th>Country</th>
-												<th>Actions</th>
-                                            </tr>
+                                        <tr>
+                                            <th>Cities</th>
+											<th>Country</th>
+											<th>Actions</th>
+                                        </tr>
                                     </thead>
                                     <!-- looping over each of the cities to get each of them rendered -->
                                     {% for city in cities %}
                                     <tbody>
                                         <tr>
-                                    
                                             <td>{{city.name}}</td>
-											<td>{{city.country}}</td>
-											<td>
-												<a class="btn btn-sm btn-warning" href="/address/edit_city/{{city.id}}/">Edit</a>
-												<a class="btn btn-sm btn-danger" href="/address/delete_city/{{city.id}}/">Delete</a>
-											</td>
+    										<td>{{city.country}}</td>
+    										<td>
+    											<a class="btn btn-sm btn-warning" href="/address/edit_city/{{city.id}}/">Edit</a>
+    											<a class="btn btn-sm btn-danger" href="/address/delete_city/{{city.id}}/">Delete</a>
+    										</td>
                                         </tr>
                                     </tbody>
                                     {% endfor %}
