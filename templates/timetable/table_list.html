@@ -5,10 +5,10 @@
 <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid" style="padding:3%;">
-                         <div class="card">
-                              <div class="card-header bg-info"><i class="fas fa-table mr-1"></i>Time Tables</div>
-                              <div class="card-body">
-                                   <div class="table-responsive">
+                         <div class="card"><!-- card starts -->
+                              <div class="card-header text-white bg-info"><i class="fas fa-table mr-1"></i><b>Time Tables</b></div>
+                              <div class="card-body"><!-- card body starts -->
+                                   <div class="table-responsive"><!-- table responsive div starts -->
                                         {% for table in tables %}
                                         <h3>{{table.class_name}} Time Table</h3>
                                         <table class="table">
