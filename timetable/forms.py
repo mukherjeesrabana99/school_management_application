@@ -12,6 +12,8 @@ class TableForm(forms.ModelForm):
 		'day3':forms.Select(attrs={'class':'form-control'}),
 		'day4':forms.Select(attrs={'class':'form-control'}),
 		'day5':forms.Select(attrs={'class':'form-control'}),
-		'ssubjec1':forms.Select(attrs={'class':'form-control'}),
+		'subjec1':forms.Select(attrs={'class':'form-control'}),
+		'subjec1Time':forms.TextInput(attrs={'class':'form-control', 'type':'time'}),
 		'subject2':forms.Select(attrs={'class':'form-control'}),
+		'subjec2Time':forms.TextInput(attrs={'class':'form-control', 'type':'time'}),
 		}
