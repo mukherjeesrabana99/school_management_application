@@ -4,12 +4,12 @@
 <link rel="stylesheet" href="{% static 'style.css' %}">
 <div id="layoutSidenav_content">
                 <main>
-                    <div class="container-fluid">
+                    <div class="container-fluid" style="padding:3%;">
 						<!-- Form Card -->
-                        <div class="card">
-                          <h5 class="card-header bg-info">Create Agenda</h5></div>
-                          <div class="card-body">
-                           <div class="form-group">
+                        <div class="card"><!-- card starts -->
+                          <h5 class="card-header text-white bg-info"><b>Create Agenda</b></div>
+                          <div class="card-body"><!-- card body starts -->
+                           <div class="form-group"><!-- form group div starts -->
                                 <form method="POST">
                                   {% csrf_token %}
                                 {{form.as_p}} 

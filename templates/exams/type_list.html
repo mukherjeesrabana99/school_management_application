@@ -11,17 +11,17 @@
                 <main>
                     <div class="container-fluid" style="padding:3%;">
                          <!-- Table Card -->
-                        <div class="card">
-                          <div class="card-header bg-info"><i class="fas fa-table mr-1"></i>Exam Types</h5></div>
-                          <div class="card-body">
-                            <div class="table-responsive">
+                        <div class="card"><!-- card starts -->
+                          <div class="card-header text-white bg-info"><i class="fas fa-table mr-1"></i><b>Exam Types</b></div>
+                          <div class="card-body"><!-- card body starts -->
+                            <div class="table-responsive"><!-- table responsive div starts -->
                                 <table class="table">
                                     <thead>
                                             <tr>
-                                                  <th>Exam Type</th>
-                                                  <th>Createh at</td>
-                                                  <th>Actions</th>
-                                            </tr>
+                                                <th>Exam Type</th>
+                                                <th>Createh at</td>
+                                                <th>Actions</th>
+                                          </tr>
                                     </thead>
                                     <!-- looping over each of the Exam Types to get each of them rendered -->
                                     {% for type in types %}

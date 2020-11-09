@@ -11,10 +11,10 @@
                 <main>
                     <div class="container-fluid" style="padding:3%;">
                          <!-- Table Card -->
-                        <div class="card">
-                          <div class="card-header bg-info"><i class="fas fa-table mr-1"></i>Members</h5></div>
-                          <div class="card-body">
-                            <div class="table-responsive">
+                        <div class="card"><!-- card starts -->
+                          <div class="card-header text-white bg-info"><i class="fas fa-table mr-1"></i><b>Exam Members</b></div>
+                          <div class="card-body"><!-- card body starts -->
+                            <div class="table-responsive"><!-- table responsive div starts -->
                                 <table class="table">
                                     <thead>
                                             <tr>
@@ -30,20 +30,20 @@
                                         <tr>
                                     
                                             <td>
-                                        {% ifequal member.student.gender "male" %}
-                                        <img  class="detail-img" src="{% static 'boy.png' %}">
-                                        {% else %}
-                                        <img class="detail-img" src="{% static 'girl.png' %}">
-                                        {% endifequal %}
-                                                  </td>
-                                                  <td>{{member.exam.name}}</td>
-                                                  <td>{{member.student.name}}</td>
-                                                  <td>
-                                                       <a class="btn btn-sm btn-info" href="/events/view_member/{{member.id}}/">View</a>
-                                                       <a class="btn btn-sm btn-warning" href="/events/edit_member/{{member.id}}/">Edit</a>
-                                                       <a class="btn btn-sm btn-danger" href="/events/delete_member/{{member.id}}/">Delete</a>
+                                              {% ifequal member.student.gender "male" %}
+                                              <img  class="detail-img" src="{% static 'boy.png' %}">
+                                              {% else %}
+                                              <img class="detail-img" src="{% static 'girl.png' %}">
+                                              {% endifequal %}
+                                            </td>
+                                            <td>{{member.exam.name}}</td>
+                                            <td>{{member.student.name}}</td>
+                                            <td>
+                                                 <a class="btn btn-sm btn-info" href="/events/view_member/{{member.id}}/">View</a>
+                                                 <a class="btn btn-sm btn-warning" href="/events/edit_member/{{member.id}}/">Edit</a>
+                                                 <a class="btn btn-sm btn-danger" href="/events/delete_member/{{member.id}}/">Delete</a>
 
-                                                  </td>
+                                            </td>
                                         </tr>
                                     </tbody>
                                     {% endfor %}
