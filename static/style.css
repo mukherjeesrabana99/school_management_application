@@ -1,15 +1,8 @@
+/* setting size of image of each of the students to be rendered in tables */
+
+
 img{
 	height:60px;
 	width:60px;
-}
-table, th, td {
-  border: 1px solid black;
-  border-collapse: collapse;
-  
-  padding:30px;
-}
-th, td {
-  padding: 5px;
-  text-align: left;
 }
 
