@@ -5,10 +5,10 @@
 <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid" style="padding:3%;">
-                    	<div class="card">
-                              <div class="card-header bg-info">Add Notice</div>
-                    		<div class="card-body">
-                    			<div class="form-group">
+                    	<div class="card"><!-- card starts -->
+                              <div class="card-header text-white bg-info"><b>Add Notice</b></div>
+                    		<div class="card-body"><!-- card body starts -->
+                    			<div class="form-group"><!-- form group starts -->
                     				<form method='POST'>
 									{% csrf_token %}
 									{{form.as_p}}
