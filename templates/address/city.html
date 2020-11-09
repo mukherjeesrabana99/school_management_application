@@ -35,23 +35,23 @@
                           <div class="card-body"><!-- card body starts -->
                             <div class="table-responsive"><!-- table responsive div starts -->
                                 <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th>Cities</th>
-											<th>Country</th>
-											<th>Actions</th>
+                                    <thead>  
+					<tr>
+					<th>Cities</th>
+					<th>Country</th>
+					<th>Actions</th>
                                         </tr>
                                     </thead>
                                     <!-- looping over each of the cities to get each of them rendered -->
                                     {% for city in cities %}
                                     <tbody>
                                         <tr>
-                                            <td>{{city.name}}</td>
-    										<td>{{city.country}}</td>
-    										<td>
-    											<a class="btn btn-sm btn-warning" href="/address/edit_city/{{city.id}}/">Edit</a>
-    											<a class="btn btn-sm btn-danger" href="/address/delete_city/{{city.id}}/">Delete</a>
-    										</td>
+				    	<td>{{city.name}}</td>
+					<td>{{city.country}}</td>
+					<td>
+						<a class="btn btn-sm btn-warning" href="/address/edit_city/{{city.id}}/">Edit</a>
+						<a class="btn btn-sm btn-danger" href="/address/delete_city/{{city.id}}/">Delete</a>
+					</td>
                                         </tr>
                                     </tbody>
                                     {% endfor %}
