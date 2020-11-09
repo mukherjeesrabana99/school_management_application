@@ -12,10 +12,10 @@
                 <main>
                     <div class="container-fluid" style="padding:3%;">
 							<!-- Form Card -->
-                        <div class="card">
-                          <div class="card-header bg-info">Register Classroom</h5></div>
-                          <div class="card-body">
-                           <div class="form-group">
+                        <div class="card"><!-- card starts -->
+                          <div class="card-header text-white bg-info"><b>Register Classroom</b></div>
+                          <div class="card-body"><!-- card body starts -->
+                           <div class="form-group"><!-- form group starts -->
                                 <form method="POST">
                                   {% csrf_token %}
                                 {{form.as_p}} 
@@ -31,10 +31,10 @@
 
 
                          <!-- Table Card -->
-                        <div class="card">
-                          <div class="card-header bg-info"><i class="fas fa-table mr-1"></i>Classrooms</h5></div>
-                          <div class="card-body">
-                            <div class="table-responsive">
+                        <div class="card"><!-- card starts -->
+                          <div class="card-header text-white bg-info"><i class="fas fa-table mr-1"></i><b>Classrooms</b></div>
+                          <div class="card-body"><!-- card body starts -->
+                            <div class="table-responsive"><!-- table responsive starts -->
                                 <table class="table">
                                     <thead>
                                             <tr>
