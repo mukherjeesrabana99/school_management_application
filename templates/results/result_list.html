@@ -10,10 +10,10 @@
 <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid" style="padding:3%;">
-                        <div class="card">
-                              <div class="card-header bg-info"><i class="fas fa-table mr-1"></i>Results</div>
-                              <div class="card-body">
-                                    <div class="table-responsive">
+                        <div class="card"><!-- card starts -->
+                              <div class="card-header text-white bg-info"><i class="fas fa-table mr-1"></i><b>Results</b></div>
+                              <div class="card-body"><!-- card body starts -->
+                                    <div class="table-responsive"><!-- table responsive div starts -->
                                          <table>
                                           <thead>
                                                  <tr>
@@ -29,6 +29,7 @@
                                                 </tr>
                                           </thead>
                                           <tbody>
+                                                <!-- looping over each of the result to render each of them -->
                                                 {% for result in results %}
                                                 <tr>
                                                       <td>
@@ -63,6 +64,7 @@
                                                       </td>
                                                 </tr>
                                                 {% endfor %}
+                                                <!-- end of loop -->
                                           </tbody>
                                                
                                     </table> 
