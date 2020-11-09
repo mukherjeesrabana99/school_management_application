@@ -37,10 +37,10 @@
                                     <thead>
                                             <tr>
                                                 <th>Session Start</th>
-												<th>Session End</th>
-												<th>Session</th>
-												<th>Date</th>
-												<th>Actions</th>
+						<th>Session End</th>
+						<th>Session</th>
+						<th>Date</th>
+						<th>Actions</th>
                                             </tr>
                                     </thead>
                                     <!-- looping over each of the Sessions to get each of them rendered -->
@@ -48,18 +48,18 @@
                                     <tbody>
                                         <tr>
                                     
-                                            <td>{{session.session_start}}</td>
-											<td>{{session.session_end}}</td>
-											<td>{{session.name}}
-											{% if session.current %}
-											<em>[Current]</em>
-											{% endif %}
-											</td>
-											<td>{{session.date}}</td>
-											<td>
-												<a class="btn btn-sm btn-warning" href="/academics/edit_session/{{session.id}}/">Edit</a>
-												<a class="btn btn-sm btn-danger" href="/academics/delete_session/{{session.id}}/">Delete</a>
-											</td>
+                                            	<td>{{session.session_start}}</td>
+						<td>{{session.session_end}}</td>
+						<td>{{session.name}}
+						{% if session.current %}
+						<em>[Current]</em>
+						{% endif %}
+						</td>
+						<td>{{session.date}}</td>
+						<td>
+							<a class="btn btn-sm btn-warning" href="/academics/edit_session/{{session.id}}/">Edit</a>
+							<a class="btn btn-sm btn-danger" href="/academics/delete_session/{{session.id}}/">Delete</a>
+						</td>
                                         </tr>
                                     </tbody>
                                     {% endfor %}
