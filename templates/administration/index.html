@@ -125,10 +125,11 @@
                                 </div>
                             </div>
                         </div>
+                        {% for notice in notices %}
                         <div class="card">
-                              <div class="card-header bg-info"><i class="fas fa-table mr-1"></i>Notices</div>
+                              <div class="card-header text-white bg-info"><i class="fas fa-table mr-1"></i><b>Notices</b></div>
                               <div class="card-body">
-                                  {% for notice in notices %}
+                                  
                                    <h5>{{notice.heading}}</h5>
                                    <p>{{notice.body}}</p>
                                    Posted on {{notice.date}}
@@ -140,6 +141,10 @@
                          </div>
                          <!-- end of card -->
                         {% endfor %}
+
+
+
+
                         <!-- <div class="row">
                             <div class="col-xl-6">
                                 <div class="card mb-4">

@@ -12,10 +12,10 @@
                     <div class="container-fluid" style="padding:3%;">
 
                          <!-- Table Card -->
-                        <div class="card">
-                          <div class="card-header bg-info"><i class="fas fa-table mr-1"></i>Attendance Data</h5></div>
-                          <div class="card-body">
-                            <div class="table-responsive">
+                        <div class="card"><!-- card starts -->
+                          <div class="card-header text-white bg-info"><i class="fas fa-table mr-1"></i><b>Attendance Data</b></div>
+                          <div class="card-body"><!-- card body starts -->
+                            <div class="table-responsive"><!-- table responsive div starts -->
                                 <table class="table">
                                     <thead>
                                             <tr>
@@ -33,12 +33,12 @@
                                         <tr>
 
                                     
-                                             <td>
-                                             {% if attendance.student.gender == "male" %}
-                                             <img src="{% static 'boy.png' %}">
-                                             {% else %}
-                                             <img src="{% static 'girl.png' %}">
-                                             {% endif %}
+                                       <td>
+                                       {% if attendance.student.gender == "male" %}
+                                       <img src="{% static 'boy.png' %}">
+                                       {% else %}
+                                       <img src="{% static 'girl.png' %}">
+                                       {% endif %}
 
                                         </td>
                                         <td>{{attendance.student.name}}</td>

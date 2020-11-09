@@ -6,13 +6,15 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid" style="padding:2%;">
+                        <!-- row starts -->
                         <div class="row">
+                             <!-- first column starts -->
                             <div class="col-xl-6">
                                  <!-- Form Card -->
-                                <div class="card">
-                                  <div class="card-header bg-info"><h5>Fees Form</h5></div>
-                                  <div class="card-body">
-                                   <div class="form-group">
+                                <div class="card"><!-- card starts -->
+                                  <div class="card-header text-white bg-info"><b>Fees Form</b></div>
+                                  <div class="card-body"><!-- card body starts -->
+                                   <div class="form-group"><!-- form group div starts -->
                                         <form method="POST">
                                           {% csrf_token %}
                                         {{form.as_p}} 
@@ -26,13 +28,14 @@
                                 </div>
                                 <!-- end of card -->
                             </div>
-                            <!-- end of one column -->
+                            <!-- end of first column -->
+                            <!-- 2nd column starts -->
                             <div class="col-xl-6">
                                 <!-- Table Card -->
-                                <div class="card">
-                                  <div class="card-header bg-info"><i class="fas fa-table mr-1"></i>Fees Structure</h5></div>
-                                  <div class="card-body">
-                                    <div class="table-responsive">
+                                <div class="card"><!-- card starts -->
+                                  <div class="card-header text-white bg-info"><i class="fas fa-table mr-1"></i><b>Fees Structure</b></div>
+                                  <div class="card-body"><!-- card body starts -->
+                                    <div class="table-responsive"><!-- card starts -->
                                         <table class="table">
                                             <thead>
                                                     <tr>
@@ -61,14 +64,15 @@
                                 </div>
                                 <!-- end of card -->
                                         
-                                    </div>
-                            <!-- end of column -->
+                            </div>
+                            <!-- end of 2nd column -->
+                            <!-- 3rd column starts -->
                             <div class="col-xl-6">
                                 <!-- Table Card -->
-                                <div class="card">
-                                  <div class="card-header bg-info"><i class="fas fa-table mr-1"></i><strong>View Fee Payment Status ClassWise</strong></div>
-                                  <div class="card-body">
-                                    <div class="table-responsive">
+                                <div class="card"><!-- card starts -->
+                                  <div class="card-header text-white bg-info"><i class="fas fa-table mr-1"></i><strong>View Fee Payment Status ClassWise</strong></div>
+                                  <div class="card-body"><!-- card body starts -->
+                                    <div class="table-responsive"><!-- table responsive div starts -->
                                         <table class="table">
                                             <thead>
                                                     <tr>
@@ -97,7 +101,7 @@
                                 <!-- end of card -->
                                 
                             </div>
-                            <!-- end of column -->
+                            <!-- end of 3rd column -->
                         </div>
                         <!-- end of row -->
                        
