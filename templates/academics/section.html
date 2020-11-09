@@ -38,8 +38,8 @@
                                     <thead>
                                             <tr>
                                                 <th>Section></th>
-												<th>Date</th>
-												<th>Actions</th>
+						<th>Date</th>
+						<th>Actions</th>
                                             </tr>
                                     </thead>
                                     <!-- looping over each of the sections to get each of them rendered -->
@@ -47,12 +47,12 @@
                                     <tbody>
                                         <tr>
                                     
-                                            <td>{{section.name}}</td>
-											<td>{{section.date}}</td>
-											<td>
-												<a class="btn btn-sm btn-warning" href="/academics/edit_section/{{section.id}}/">Edit</a>
-												<a class="btn btn-sm btn-danger" href="/academics/delete_section/{{section.id}}/">Delete</a>
-											</td>
+                                            	<td>{{section.name}}</td>
+						<td>{{section.date}}</td>
+						<td>
+							<a class="btn btn-sm btn-warning" href="/academics/edit_section/{{section.id}}/">Edit</a>
+							<a class="btn btn-sm btn-danger" href="/academics/delete_section/{{section.id}}/">Delete</a>
+						</td>
                                         </tr>
                                     </tbody>
                                     {% endfor %}
