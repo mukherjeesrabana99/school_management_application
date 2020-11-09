@@ -8,12 +8,12 @@
                     	<div class="card"><!-- card starts -->
                               <div class="card-header text-white bg-info"><b>Add Notice</b></div>
                     		<div class="card-body"><!-- card body starts -->
-                    			<div class="form-group"><!-- form group starts -->
+                    			<div class="form-group"><!-- form group div starts -->
                     				<form method='POST'>
-									{% csrf_token %}
-									{{form.as_p}}
-									<button class="btn btn-info" type="submit">Submit</button>
-								</form>
+							{% csrf_token %}
+							{{form.as_p}}
+							<button class="btn btn-info" type="submit">Submit</button>
+						</form>
                     			</div>
                     			<!-- end of form group -->
                     		</div>
