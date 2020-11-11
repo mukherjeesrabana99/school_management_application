@@ -1,4 +1,6 @@
+<!-- loading static to render static files like javascript files or css files present in the static directory -->
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -14,10 +16,13 @@
         <title>School Software</title>
         
         
-<!--         Bootstrap css stylesheets/css and js links -->
+<!--         Bootstrap css stylesheet located in static directory-->
         <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+        
+<!--         Bootstrap css/js links -->
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
+<!--         ------------------------------ -->
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -244,7 +249,7 @@
 
 
 
-<!-- Bootstarp javascript links -->
+<!-- Bootstarp javascript links and javascript files located in the static directory -->
 
 
         <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
